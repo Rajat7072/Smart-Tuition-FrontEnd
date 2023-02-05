@@ -22,7 +22,7 @@ export const detailPush = async ({
 }) => {
   try {
     const response = await axios.post(
-      "http://localhost:8089/api/details/student-detail",
+      "http://smarttuition.co.in/api/details/student-detail",
       {
         subject,
         class_val,
