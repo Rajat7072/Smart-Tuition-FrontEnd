@@ -57,7 +57,7 @@ code {
   justify-content: center;
   text-align: center;
   position: absolute;
-  top: 40%;
+  top: 35%;
   left: 25%;
   right: 25%;
   color: black;
@@ -90,7 +90,7 @@ code {
   flex-direction: column;
   align-items: center;
   width:100%;
-  height:450px
+  height:auto;
 }
 .icon{
   margin-top: 15px;
@@ -292,7 +292,7 @@ code {
   margin-right: 20px;
 }
 
-@media only screen and (max-width:1305px){
+@media only screen and (max-width:850px){
   .Student_is_radio{
     font-size: 13px;
   }
@@ -330,15 +330,9 @@ code {
     padding-bottom: 20px;
     width: 100%;
   }
-  .display{
-    display: none;
-  }
   .setText{
     display: flex;
     flex-direction: column;
-  }
-  .textarea{
-    top:20%;
   }
   .step1{
     display: flex;
@@ -357,5 +351,14 @@ code {
   .Select_hover{
     font-size: 12px;
     width: 100%;
+  }
+}
+
+@media only screen and (max-width:1000px){
+  .display{
+    display: none;
+  }
+  .textarea{
+    top:20%;
   }
 }

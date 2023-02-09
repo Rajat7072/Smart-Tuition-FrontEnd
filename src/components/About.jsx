@@ -6,11 +6,11 @@ const About = () => {
     <div className="about">
       <div className="Number_detail">
         <h2 style={{ color: "aqua" }}>
-          <i>BookMyTutor</i>
+          <i>Smart-Tuition</i>
         </h2>
         <p className="mypara">
           Come experience the ultimate tuition destination in your neighbourhood
-          with BookMyTutor. Upgrade your academic performance with the best of
+          with Smart-Tuition. Upgrade your academic performance with the best of
           offline Proffessionals.
         </p>
       </div>
