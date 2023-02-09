@@ -27,7 +27,7 @@ const Step1 = () => {
         theme: "light",
       });
     } else {
-      console.log(select_subject);
+      //console.log(select_subject);
       setApiDetail({ ...ApiDetail, subject: select_subject });
       navigate("/step2");
     }

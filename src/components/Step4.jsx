@@ -51,12 +51,12 @@ const Step4 = () => {
     } else {
       setApiDetail({ ...ApiDetail, zip_address: pincode });
       navigate("/step5");
-      console.log(pincode);
+      //console.log(pincode);
     }
   };
   const handleChange = (e) => {
     setPincode({ ...pincode, [e.target.name]: e.target.value });
-    console.log(pincode);
+    //console.log(pincode);
   };
   return (
     <>

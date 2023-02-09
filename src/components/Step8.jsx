@@ -29,13 +29,13 @@ const Step8 = () => {
     }
   };
   const handleChange = (e) => {
-    console.log(e.target.value);
+    //console.log(e.target.value);
     if (day.includes(e.target.value)) {
       setDay(day.filter((item) => item !== e.target.value));
     } else {
       setDay([...day, e.target.value]);
     }
-    console.log(day);
+    //console.log(day);
   };
   const step8 = true;
   return (

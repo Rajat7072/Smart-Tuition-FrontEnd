@@ -26,7 +26,7 @@ const Step5 = () => {
       });
     } else {
       setApiDetail({ ...ApiDetail, school: School_word });
-      console.log(School_word);
+      //console.log(School_word);
       navigate("/step6");
     }
   };
