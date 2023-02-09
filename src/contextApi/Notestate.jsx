@@ -22,7 +22,7 @@ const Notestate = (props) => {
     gender_of_taecher: "",
     taecher_qualification_detail: "",
   });
-  console.log(ApiDetail);
+  //console.log(ApiDetail);
   return (
     <Notecontext.Provider value={{ ApiDetail, setApiDetail }}>
       {props.children}
