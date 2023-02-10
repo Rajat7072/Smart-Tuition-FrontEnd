@@ -16,12 +16,13 @@ const Step10 = () => {
     gender_of_taecher: "",
     taecher_qualification_detail: "",
   });
+
   const handleClick = async () => {
     //console.log(pref_Text);
     if (
-      pref_Text?.slot_preference === "" ||
-      pref_Text?.age_of_taecher === "" ||
-      pref_Text?.gender_of_taecher === ""
+      pref_Text.slot_preference === "" ||
+      pref_Text.age_of_taecher === "" ||
+      pref_Text.gender_of_taecher === ""
     ) {
       toast.warn("Fields cann't be Empty 🤔", {
         position: "top-center",
@@ -34,20 +35,21 @@ const Step10 = () => {
         theme: "light",
       });
     } else {
-      await setApiDetail({
+      setApiDetail({
         ...ApiDetail,
-        slot_preference: pref_Text.slot_preference,
-        age_of_taecher: pref_Text.age_of_taecher,
-        gender_of_taecher: pref_Text.gender_of_taecher,
-        remark_if_any: pref_Text.remark_if_any,
-        taecher_qualification_detail: pref_Text.taecher_qualification_detail,
+        ...pref_Text,
       });
       //console.log(ApiDetail);
       detailPush(ApiDetail);
     }
   };
+
   const handleText = (e) => {
     setpref_Text({ ...pref_Text, [e.target.name]: e.target.value });
+    setApiDetail({
+      ...ApiDetail,
+      ...{ ...pref_Text, [e.target.name]: e.target.value },
+    });
     //console.log(pref_Text);
   };
 
