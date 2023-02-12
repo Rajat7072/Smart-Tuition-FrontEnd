@@ -5,8 +5,10 @@ import { toast } from "react-toastify";
 import BackArrow from "./BackArrow";
 import Notecontext from "../contextApi/Notecontext";
 import { detailPush } from "../ApiCalls/DetailApi";
+import { useNavigate } from "react-router-dom";
 
 const Step10 = () => {
+  const navigate = useNavigate();
   const step10context = useContext(Notecontext);
   const { ApiDetail, setApiDetail } = step10context;
   const [pref_Text, setpref_Text] = useState({
@@ -19,7 +21,22 @@ const Step10 = () => {
 
   const handleClick = async () => {
     //console.log(pref_Text);
-    if (
+    if (ApiDetail.time_preference === "") {
+      navigate("/");
+      toast(
+        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+    } else if (
       pref_Text.slot_preference === "" ||
       pref_Text.age_of_taecher === "" ||
       pref_Text.gender_of_taecher === ""
@@ -201,7 +218,7 @@ const Step10 = () => {
         </div>
         <div style={{ marginTop: "20px" }}>
           <div style={{ marginBottom: "15px" }}>
-            <h5 style={{ color: "blue" }}>Tgender Preference :</h5>
+            <h5 style={{ color: "blue" }}>Gender Preference :</h5>
           </div>
           <div style={{ display: "flex" }}>
             <div className="form-check margin_right">

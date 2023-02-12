@@ -26,7 +26,22 @@ const Step6 = () => {
   const step6 = true;
   const navigate = useNavigate();
   const handleClick = (e) => {
-    if (
+    if (ApiDetail.school === "") {
+      navigate("/");
+      toast(
+        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+    } else if (
       student_details.name === "" ||
       student_details.email === "" ||
       student_details.gender === "" ||

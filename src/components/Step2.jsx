@@ -11,11 +11,27 @@ const Step2 = () => {
   const step2context = useContext(Notecontext);
   const { ApiDetail, setApiDetail } = step2context;
   const navigate = useNavigate();
+
   const handleClick = () => {
-    if (class_value === "") {
+    if (ApiDetail.subject === "") {
+      navigate("/");
+      toast(
+        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+    } else if (class_value === "") {
       toast("Please select your class! 🤔", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 4000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -51,6 +67,7 @@ const Step2 = () => {
         >
           <h4>Select The class you want to Study ?</h4>
         </div>
+
         <div className="form-check" style={{ marginTop: "10px" }}>
           <input
             className="form-check-input"
@@ -298,6 +315,7 @@ const Step2 = () => {
             Others
           </label>
         </div>
+
         <button
           style={{ marginTop: "50px" }}
           type="button"

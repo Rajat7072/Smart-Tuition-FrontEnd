@@ -17,7 +17,7 @@ const HowItWorks = () => {
           <h5 style={{ marginTop: "50px" }}>Choose your Mentor</h5>
           <p className="para">
             We have 8000+ qualified home tutors, Search for the best home tutor
-            in your local area Or call us at (+91 0000000000) to make it quick,
+            in your local area Or call us at (+91 8707258661) to make it quick,
             we will help you have only best fit tutors to contact you! Our
             Education Consultant will reach out to you with the profile of the
             prospective tutor and their prices that suits your budget.

@@ -31,24 +31,21 @@ const About = () => {
       <div className="Number_detail">
         <h2 style={{ color: "aqua" }}>Information</h2>
         <div className="mypara">
-          <Link to="/tutors_in_india" className="linkStyle">
+          <Link to="/aboutUs" className="linkStyle">
             <h5>About Us</h5>
           </Link>
-          <Link to="/tutors_in_india" className="linkStyle">
-            <h5>FAQ</h5>
-          </Link>
-          <Link to="/tutors_in_india" className="linkStyle">
+          {/* <Link to="/tutors_in_india" className="linkStyle">
             <h5>Contact Us</h5>
-          </Link>
-          <Link to="/tutors_in_india" className="linkStyle">
+          </Link> */}
+          <Link to="/Termsofuse" className="linkStyle">
             <h5>Terms of use</h5>
           </Link>
-          <Link to="/tutors_in_india" className="linkStyle">
+          <Link to="/Privacypolicies" className="linkStyle">
             <h5>Privacy Policy</h5>
           </Link>
-          <Link to="/tutors_in_india" className="linkStyle">
+          {/* <Link to="/Termsfortutors" className="linkStyle">
             <h5>Terms For Tutors</h5>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

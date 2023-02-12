@@ -17,6 +17,10 @@ import { ToastContainer } from "react-toastify";
 import Notestate from "./contextApi/Notestate";
 import TeacherSignUp from "./components/TeacherSignUp";
 import TeacherDetail from "./components/TeacherDetail";
+import AboutMain from "./components/AboutMain";
+import TermsOfUse from "./components/Termsofuse";
+import Termsfortutors from "./components/Termsfortutors";
+import Privacypolicies from "./components/Privacypolicies";
 function App() {
   return (
     <>
@@ -38,8 +42,18 @@ function App() {
               <Route path="/step9" element={<Step9 />}></Route>
               <Route path="/step10" element={<Step10 />}></Route>
               <Route path="/final" element={<Final />}></Route>
+              <Route path="/aboutUs" element={<AboutMain />}></Route>
               <Route path="/TeacherSignUp" element={<TeacherSignUp />}></Route>
               <Route path="/TeacherDetails" element={<TeacherDetail />}></Route>
+              <Route path="/Termsofuse" element={<TermsOfUse />}></Route>
+              <Route
+                path="/Privacypolicies"
+                element={<Privacypolicies />}
+              ></Route>
+              <Route
+                path="/Termsfortutors"
+                element={<Termsfortutors />}
+              ></Route>
             </Route>
           </Routes>
         </Notestate>

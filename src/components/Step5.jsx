@@ -13,7 +13,22 @@ const Step5 = () => {
   const step5context = useContext(Notecontext);
   const { ApiDetail, setApiDetail } = step5context;
   const handleClick = () => {
-    if (School_word === "") {
+    if (ApiDetail.zip_address === "") {
+      navigate("/");
+      toast(
+        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+    } else if (School_word === "") {
       toast("Please fill your School Details! 🤔", {
         position: "top-right",
         autoClose: 3000,

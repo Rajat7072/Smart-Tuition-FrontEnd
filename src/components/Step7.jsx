@@ -12,7 +12,27 @@ const Step7 = () => {
   const { ApiDetail, setApiDetail } = step7context;
   const navigate = useNavigate();
   const handleClick = () => {
-    if (class_weak === "") {
+    if (
+      ApiDetail.student_name === "" ||
+      ApiDetail.mobile_number === "" ||
+      ApiDetail.email === "" ||
+      ApiDetail.gender === ""
+    ) {
+      navigate("/");
+      toast(
+        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+    } else if (class_weak === "") {
       toast.warn("Fields cann't be Empty 🤔", {
         position: "top-center",
         autoClose: 3000,

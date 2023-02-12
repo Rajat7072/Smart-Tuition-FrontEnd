@@ -6,28 +6,23 @@ const Searchbox = () => {
   const handleSubmit = () => {
     navigate("/step1");
   };
-  const handleChange = () => {};
   return (
     <div className="setText">
       <b
         className="setTextBorder"
-        style={{ fontSize: "20px", marginTop: "2px" }}
+        style={{ fontSize: "20px", marginTop: "2px", marginRight: "4px" }}
       >
         Looking For A Tutor
       </b>
-      <form className="d-flex mx-2" onSubmit={handleSubmit}>
-        <input
-          className="form-control me-2"
-          type="search"
-          placeholder="Type Subject"
-          aria-label="Search"
-          onChange={handleChange}
-          required
-        />
-        <button className="btn btn-primary" type="submit">
-          Search
+      <div className="d-flex mx-2">
+        <button
+          className="btn btn-primary"
+          type="submit"
+          onClick={handleSubmit}
+        >
+          Click Here
         </button>
-      </form>
+      </div>
     </div>
   );
 };

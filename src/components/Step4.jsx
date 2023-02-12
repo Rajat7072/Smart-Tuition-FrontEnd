@@ -20,10 +20,26 @@ const Step4 = () => {
   const { ApiDetail, setApiDetail } = step4context;
   const navigate = useNavigate();
   const handleClick = () => {
-    if (
+    if (ApiDetail.board === "") {
+      navigate("/");
+      toast(
+        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+    } else if (
       pincode?.HouseNo === "" ||
       pincode?.Addressone === "" ||
-      (pincode?.city === "" && pincode?.state === "")
+      pincode?.city === "" ||
+      pincode?.state === ""
     ) {
       toast("Please Enter the * Mandatory Fields!", {
         position: "top-right",

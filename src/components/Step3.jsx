@@ -13,7 +13,22 @@ const Step3 = () => {
   const { ApiDetail, setApiDetail } = step3context;
   const navigate = useNavigate();
   const handleClick = () => {
-    if (board === "") {
+    if (ApiDetail.class_val === "") {
+      navigate("/");
+      toast(
+        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+    } else if (board === "") {
       toast("Please select your Board! 🤔", {
         position: "top-right",
         autoClose: 3000,

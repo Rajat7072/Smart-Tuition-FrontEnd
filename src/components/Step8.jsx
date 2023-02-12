@@ -12,7 +12,22 @@ const Step8 = () => {
   const step8context = useContext(Notecontext);
   const { ApiDetail, setApiDetail } = step8context;
   const handleClick = () => {
-    if (day === "") {
+    if (ApiDetail.classes_in_a_weak === "") {
+      navigate("/");
+      toast(
+        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+    } else if (day === "") {
       toast("Please Enter your Days Preference 🤔", {
         position: "top-center",
         autoClose: 3000,
