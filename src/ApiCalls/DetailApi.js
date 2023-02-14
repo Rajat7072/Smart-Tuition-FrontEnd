@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const detailPush = async ({
+export const DetailPush = async ({
   subject,
   class_val,
   board,

@@ -2,7 +2,7 @@ import React from "react";
 import Breadcrumps from "./Breadcrumps";
 import data from "../schoolData.json";
 import Scrollbar from "./Scrollbar";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Notecontext from "../contextApi/Notecontext";
 import { useNavigate } from "react-router-dom";
 import BackArrow from "./BackArrow";
@@ -10,25 +10,20 @@ import { toast } from "react-toastify";
 
 const Step5 = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    if (
+      ApiDetail.subject === "" ||
+      ApiDetail.class_val === "" ||
+      ApiDetail.board === "" ||
+      ApiDetail.zip_address === ""
+    ) {
+      navigate("/");
+    } // eslint-disable-next-line
+  }, []);
   const step5context = useContext(Notecontext);
   const { ApiDetail, setApiDetail } = step5context;
   const handleClick = () => {
-    if (ApiDetail.zip_address === "") {
-      navigate("/");
-      toast(
-        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
-        {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        }
-      );
-    } else if (School_word === "") {
+    if (School_word === "") {
       toast("Please fill your School Details! 🤔", {
         position: "top-right",
         autoClose: 3000,

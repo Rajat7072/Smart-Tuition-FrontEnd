@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import BackArrow from "./BackArrow";
 import Breadcrumps from "./Breadcrumps";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import Notecontext from "../contextApi/Notecontext";
 
@@ -11,28 +11,23 @@ const Step7 = () => {
   const step7context = useContext(Notecontext);
   const { ApiDetail, setApiDetail } = step7context;
   const navigate = useNavigate();
-  const handleClick = () => {
+  useEffect(() => {
     if (
+      ApiDetail.subject === "" ||
+      ApiDetail.class_val === "" ||
+      ApiDetail.board === "" ||
+      ApiDetail.zip_address === "" ||
+      ApiDetail.school === "" ||
       ApiDetail.student_name === "" ||
       ApiDetail.mobile_number === "" ||
       ApiDetail.email === "" ||
       ApiDetail.gender === ""
     ) {
       navigate("/");
-      toast(
-        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
-        {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        }
-      );
-    } else if (class_weak === "") {
+    } // eslint-disable-next-line
+  }, []);
+  const handleClick = () => {
+    if (class_weak === "") {
       toast.warn("Fields cann't be Empty 🤔", {
         position: "top-center",
         autoClose: 3000,

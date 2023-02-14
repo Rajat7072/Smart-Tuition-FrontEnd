@@ -2,12 +2,21 @@ import React from "react";
 import Breadcrumps from "./Breadcrumps";
 import { useNavigate } from "react-router-dom";
 import BackArrow from "./BackArrow";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Notecontext from "../contextApi/Notecontext";
 import { toast } from "react-toastify";
 
 const Step4 = () => {
   const step4 = true;
+  useEffect(() => {
+    if (
+      ApiDetail.subject === "" ||
+      ApiDetail.class_val === "" ||
+      ApiDetail.board === ""
+    ) {
+      navigate("/");
+    } // eslint-disable-next-line
+  }, []);
   const [pincode, setPincode] = useState({
     HouseNo: "",
     BlockNo: "",
@@ -20,22 +29,7 @@ const Step4 = () => {
   const { ApiDetail, setApiDetail } = step4context;
   const navigate = useNavigate();
   const handleClick = () => {
-    if (ApiDetail.board === "") {
-      navigate("/");
-      toast(
-        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
-        {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        }
-      );
-    } else if (
+    if (
       pincode?.HouseNo === "" ||
       pincode?.Addressone === "" ||
       pincode?.city === "" ||

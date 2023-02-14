@@ -2,7 +2,7 @@ import React from "react";
 import Breadcrumps from "./Breadcrumps";
 import { useNavigate } from "react-router-dom";
 import BackArrow from "./BackArrow";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Notecontext from "../contextApi/Notecontext";
 import { toast } from "react-toastify";
 
@@ -16,6 +16,17 @@ const Step6 = () => {
     gender: "Boy",
   });
   const step6context = useContext(Notecontext);
+  useEffect(() => {
+    if (
+      ApiDetail.subject === "" ||
+      ApiDetail.class_val === "" ||
+      ApiDetail.board === "" ||
+      ApiDetail.zip_address === "" ||
+      ApiDetail.school === ""
+    ) {
+      navigate("/");
+    } // eslint-disable-next-line
+  }, []);
   const { ApiDetail, setApiDetail } = step6context;
   const handleChange = (e) => {
     setStudent_details({
@@ -26,22 +37,7 @@ const Step6 = () => {
   const step6 = true;
   const navigate = useNavigate();
   const handleClick = (e) => {
-    if (ApiDetail.school === "") {
-      navigate("/");
-      toast(
-        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
-        {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        }
-      );
-    } else if (
+    if (
       student_details.name === "" ||
       student_details.email === "" ||
       student_details.gender === "" ||

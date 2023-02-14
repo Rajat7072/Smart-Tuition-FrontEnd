@@ -3,12 +3,28 @@ import Breadcrumps from "./Breadcrumps";
 import { useNavigate } from "react-router-dom";
 import BackArrow from "./BackArrow";
 import { toast } from "react-toastify";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Notecontext from "../contextApi/Notecontext";
 
 const Step8 = () => {
   const [day, setDay] = useState([]);
   const navigate = useNavigate();
+  useEffect(() => {
+    if (
+      ApiDetail.subject === "" ||
+      ApiDetail.class_val === "" ||
+      ApiDetail.board === "" ||
+      ApiDetail.zip_address === "" ||
+      ApiDetail.school === "" ||
+      ApiDetail.student_name === "" ||
+      ApiDetail.mobile_number === "" ||
+      ApiDetail.email === "" ||
+      ApiDetail.gender === "" ||
+      ApiDetail.classes_in_a_weak === ""
+    ) {
+      navigate("/");
+    } // eslint-disable-next-line
+  }, []);
   const step8context = useContext(Notecontext);
   const { ApiDetail, setApiDetail } = step8context;
   const handleClick = () => {

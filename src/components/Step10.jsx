@@ -1,10 +1,10 @@
 import React from "react";
 import Breadcrumps from "./Breadcrumps";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import BackArrow from "./BackArrow";
 import Notecontext from "../contextApi/Notecontext";
-import { detailPush } from "../ApiCalls/DetailApi";
+import { DetailPush } from "../ApiCalls/DetailApi";
 import { useNavigate } from "react-router-dom";
 
 const Step10 = () => {
@@ -18,9 +18,26 @@ const Step10 = () => {
     gender_of_taecher: "",
     taecher_qualification_detail: "",
   });
-
+  useEffect(() => {
+    if (
+      ApiDetail.subject === "" ||
+      ApiDetail.class_val === "" ||
+      ApiDetail.board === "" ||
+      ApiDetail.zip_address === "" ||
+      ApiDetail.school === "" ||
+      ApiDetail.student_name === "" ||
+      ApiDetail.mobile_number === "" ||
+      ApiDetail.email === "" ||
+      ApiDetail.gender === "" ||
+      ApiDetail.classes_in_a_weak === "" ||
+      ApiDetail.day_preference === "" ||
+      ApiDetail.time_preference === ""
+    ) {
+      navigate("/");
+    } // eslint-disable-next-line
+  }, []);
   const handleClick = async () => {
-    //console.log(pref_Text);
+    console.log(pref_Text);
     if (ApiDetail.time_preference === "") {
       navigate("/");
       toast(
@@ -57,7 +74,7 @@ const Step10 = () => {
         ...pref_Text,
       });
       //console.log(ApiDetail);
-      detailPush(ApiDetail);
+      DetailPush(ApiDetail);
     }
   };
 

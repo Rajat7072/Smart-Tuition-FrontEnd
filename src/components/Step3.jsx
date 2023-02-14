@@ -2,7 +2,7 @@ import React from "react";
 import Breadcrumps from "./Breadcrumps";
 import { useNavigate } from "react-router-dom";
 import BackArrow from "./BackArrow";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import Notecontext from "../contextApi/Notecontext";
 
@@ -12,23 +12,14 @@ const Step3 = () => {
   const step3context = useContext(Notecontext);
   const { ApiDetail, setApiDetail } = step3context;
   const navigate = useNavigate();
-  const handleClick = () => {
-    if (ApiDetail.class_val === "") {
+  useEffect(() => {
+    if (ApiDetail.subject === "" || ApiDetail.class_val === "") {
       navigate("/");
-      toast(
-        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
-        {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        }
-      );
-    } else if (board === "") {
+    } // eslint-disable-next-line
+  }, []);
+
+  const handleClick = () => {
+    if (board === "") {
       toast("Please select your Board! 🤔", {
         position: "top-right",
         autoClose: 3000,

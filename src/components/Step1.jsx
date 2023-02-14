@@ -5,7 +5,6 @@ import Breadcrumps from "./Breadcrumps";
 import { useState, useContext } from "react";
 import { toast } from "react-toastify";
 import Notecontext from "../contextApi/Notecontext";
-import WindowEvent from "./WindowEvent";
 
 const Step1 = () => {
   const navigate = useNavigate();
@@ -14,6 +13,7 @@ const Step1 = () => {
   const [select_subject, setSelect_subject] = useState(
     "Please confirm your Subject"
   );
+
   const step1 = true;
   const handleClick = () => {
     //console.log(select_subject);
@@ -40,7 +40,6 @@ const Step1 = () => {
 
   return (
     <>
-      <WindowEvent />
       <hr style={{ marginTop: "0px" }} />
       <div className="step1">
         <BackArrow />

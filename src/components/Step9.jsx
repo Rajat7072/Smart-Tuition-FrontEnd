@@ -2,7 +2,7 @@ import React from "react";
 import Breadcrumps from "./Breadcrumps";
 import { useNavigate } from "react-router-dom";
 import BackArrow from "./BackArrow";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Notecontext from "../contextApi/Notecontext";
 import { toast } from "react-toastify";
 
@@ -11,23 +11,25 @@ const Step9 = () => {
   const navigate = useNavigate();
   const step9context = useContext(Notecontext);
   const { ApiDetail, setApiDetail } = step9context;
-  const handleClick = () => {
-    if (ApiDetail.day_preference === "") {
+  useEffect(() => {
+    if (
+      ApiDetail.subject === "" ||
+      ApiDetail.class_val === "" ||
+      ApiDetail.board === "" ||
+      ApiDetail.zip_address === "" ||
+      ApiDetail.school === "" ||
+      ApiDetail.student_name === "" ||
+      ApiDetail.mobile_number === "" ||
+      ApiDetail.email === "" ||
+      ApiDetail.gender === "" ||
+      ApiDetail.classes_in_a_weak === "" ||
+      ApiDetail.day_preference === ""
+    ) {
       navigate("/");
-      toast(
-        "Please Enter Your Details Again Page reload leads to Data loss! 🤔",
-        {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        }
-      );
-    } else if (time === "") {
+    } // eslint-disable-next-line
+  }, []);
+  const handleClick = () => {
+    if (time === "") {
       toast("Please Enter your Time Preference 🤔", {
         position: "top-center",
         autoClose: 3000,
