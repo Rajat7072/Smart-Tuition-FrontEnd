@@ -21,6 +21,7 @@ import AboutMain from "./components/AboutMain";
 import TermsOfUse from "./components/Termsofuse";
 import Termsfortutors from "./components/Termsfortutors";
 import Privacypolicies from "./components/Privacypolicies";
+import PageNotFound from "./components/PageNotFound";
 function App() {
   return (
     <>
@@ -46,6 +47,7 @@ function App() {
               <Route path="/TeacherSignUp" element={<TeacherSignUp />}></Route>
               <Route path="/TeacherDetails" element={<TeacherDetail />}></Route>
               <Route path="/Termsofuse" element={<TermsOfUse />}></Route>
+              <Route path="*" element={<PageNotFound />}></Route>
               <Route
                 path="/Privacypolicies"
                 element={<Privacypolicies />}
