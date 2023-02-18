@@ -213,7 +213,6 @@ code {
 .Select_hover:hover{
   color: blue;
   text-decoration: underline;
-  cursor: pointer;
 }
 .footer{
   background: black;

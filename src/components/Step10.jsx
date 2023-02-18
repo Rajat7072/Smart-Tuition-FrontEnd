@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import BackArrow from "./BackArrow";
 import Notecontext from "../contextApi/Notecontext";
-import { DetailPush } from "../ApiCalls/DetailApi";
+import { detailPush } from "../ApiCalls/detailApi";
 import { useNavigate } from "react-router-dom";
 
 const Step10 = () => {
@@ -74,7 +74,7 @@ const Step10 = () => {
         ...pref_Text,
       });
       //console.log(ApiDetail);
-      DetailPush(ApiDetail);
+      detailPush(ApiDetail);
     }
   };
 

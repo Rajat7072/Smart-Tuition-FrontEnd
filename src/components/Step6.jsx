@@ -129,6 +129,7 @@ const Step6 = () => {
           />
           <hr style={{ color: "blue", marginTop: "0px" }} />
           <input
+            aria-describedby="emailHelp"
             style={{ width: "100%", marginTop: "15px", border: "none" }}
             type="email"
             placeholder="Enter your Email Address"

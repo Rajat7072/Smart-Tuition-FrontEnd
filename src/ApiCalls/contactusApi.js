@@ -1,46 +1,14 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const detailPush = async ({
-  subject,
-  class_val,
-  board,
-  zip_address,
-  school,
-  student_name,
-  mobile_number,
-  email,
-  gender,
-  classes_in_a_weak,
-  day_preference,
-  time_preference,
-  slot_preference,
-  age_of_taecher,
-  gender_of_taecher,
-  taecher_qualification_detail,
-  remark_if_any,
-}) => {
+export const contactuspush = async ({ name, mobileNum, emailAdd }) => {
   try {
     const response = await axios.post(
-      "https://smarttuition.co.in/api/details/student-detail",
+      "https://smarttuition.co.in/api/contact/contactus",
       {
-        subject,
-        class_val,
-        board,
-        zip_address,
-        school,
-        student_name,
-        mobile_number,
-        email,
-        gender,
-        classes_in_a_weak,
-        day_preference,
-        time_preference,
-        slot_preference,
-        age_of_taecher,
-        gender_of_taecher,
-        taecher_qualification_detail,
-        remark_if_any,
+        name,
+        mobileNum,
+        emailAdd,
       },
       {
         headers: {
@@ -48,11 +16,21 @@ export const detailPush = async ({
         },
       }
     );
-    //console.log("Detail Api");
-    const json_data = await response.data;
-    //console.log(json_data);
+    const json_data = response.data;
     if (json_data.success === true) {
-      window.location.href = "/final";
+      toast.success("we will contact you with in 24 hours", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 3000);
     } else if (json_data.errors) {
       toast.danger(json_data.errors[0].msg, {
         position: "top-right",
@@ -77,13 +55,13 @@ export const detailPush = async ({
         theme: "light",
         icon: "❗",
       });
-      window.location.href = "/";
     }
   } catch (error) {
-    console.log(error);
+    //console.log(error.response.data.errors[0].msg);
     toast(error.response.data.errors[0].msg, {
       position: "bottom-left",
       icon: "❗",
     });
+    //window.location.href = "/";
   }
 };

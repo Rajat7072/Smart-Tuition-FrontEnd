@@ -34,9 +34,9 @@ const About = () => {
           <Link to="/aboutUs" className="linkStyle">
             <h5>About Us</h5>
           </Link>
-          {/* <Link to="/tutors_in_india" className="linkStyle">
+          <Link to="/contactus" className="linkStyle">
             <h5>Contact Us</h5>
-          </Link> */}
+          </Link>
           <Link to="/Termsofuse" className="linkStyle">
             <h5>Terms of use</h5>
           </Link>

@@ -22,6 +22,7 @@ import TermsOfUse from "./components/Termsofuse";
 import Termsfortutors from "./components/Termsfortutors";
 import Privacypolicies from "./components/Privacypolicies";
 import PageNotFound from "./components/PageNotFound";
+import ContactUs from "./components/ContactUs";
 function App() {
   return (
     <>
@@ -47,6 +48,7 @@ function App() {
               <Route path="/TeacherSignUp" element={<TeacherSignUp />}></Route>
               <Route path="/TeacherDetails" element={<TeacherDetail />}></Route>
               <Route path="/Termsofuse" element={<TermsOfUse />}></Route>
+              <Route path="/contactus" element={<ContactUs />}></Route>
               <Route path="*" element={<PageNotFound />}></Route>
               <Route
                 path="/Privacypolicies"
