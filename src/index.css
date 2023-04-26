@@ -290,6 +290,16 @@ code {
 .margin_right{
   margin-right: 20px;
 }
+.myCarttoDisplay{
+  display: flex;
+  position: absolute;
+  top: 80%;
+  left: 10px;
+  border: 2px solid black;
+  padding: 3px;
+  border-radius: 5px;
+  background: white;
+}
 
 @media only screen and (max-width:850px){
   .Student_is_radio{
@@ -358,7 +368,7 @@ code {
     display: none;
   }
   .textarea{
-    top:20%;
+    top:21%;
   }
 }
 @media only screen and (max-width:600px){

@@ -39,24 +39,22 @@ const TeacherProfileDetail = () => {
 
   return (
     <>
-      <hr style={{ marginTop: "0px" }} />
+      <hr style={{ marginTop: "0px", marginBottom: "2px" }} />
       {number_of_student !== null && name_of_student !== null && (
-        <div
-          style={{
-            display: "flex",
-            textAlign: "center",
-            padding: "5px",
-            color: "red",
-          }}
-        >
-          <h6 style={{ textDecoration: "underline" }}>
-            <i>
-              Note : Due to security reasons we do not save any data filled by
-              you, Page reload will lead to all the data loss.In case of Page
-              Refresh or Reload Please fill your Enquiry again.
-            </i>
-          </h6>
-        </div>
+        <>
+          <div
+            style={{
+              display: "flex",
+              textAlign: "center",
+              padding: "5px",
+              color: "black",
+            }}
+          >
+            <h6 style={{ textDecoration: "underline" }}>
+              <i>Note : Maximum Five Teachers can be Added to the Cart.</i>
+            </h6>
+          </div>
+        </>
       )}
       {loading ? (
         <div className="step1">

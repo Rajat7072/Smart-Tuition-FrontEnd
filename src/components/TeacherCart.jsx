@@ -50,18 +50,6 @@ const TeacherCart = () => {
     <>
       <div style={{ padding: "5px", display: "flex" }}>
         <BackArrow />
-        <div>
-          <h6
-            style={{
-              marginLeft: "15px",
-              padding: "5px",
-              color: "red",
-              textAlign: "center",
-            }}
-          >
-            Note : You can Select Maximum of Five Teachers
-          </h6>
-        </div>
       </div>
       {data.teacherCart.length === 0 ? (
         <div

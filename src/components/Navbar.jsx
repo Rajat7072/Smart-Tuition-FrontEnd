@@ -8,7 +8,8 @@ const Navbar = () => {
   const cart = useSelector((state) =>
     state.cartQty !== null ? state.cartQty : 0
   );
-  const handleClickTutor = () => {
+  const handleClickTutor = (e) => {
+    e.preventDefault();
     navigate("/teacherProfileDetail");
   };
   const handletoHome = () => {
@@ -41,12 +42,17 @@ const Navbar = () => {
     // });
     navigate("/login");
   };
-  // const nav_display = JSON.parse(localStorage.getItem("cartQtyDetails"));
-  // //const nav_display_val = nav_display[0].studentName + "(Logout)";
-  // const title_display =
-  //   nav_display === null
-  //     ? "Smart-Tuition"
-  //     : nav_display[0].studentName + "(Logout)";
+  localStorage.setItem("studentName", "Vaishnavi");
+  const nav_display = localStorage.getItem("studentName");
+  if (nav_display !== null) {
+    var toDisplay = nav_display.split(" ")[0];
+  }
+  const title_display =
+    nav_display === null
+      ? "Smart-Tuition"
+      : toDisplay.length > 8
+      ? `${toDisplay.substring(0, 5)}...(Logout)`
+      : `${toDisplay.substring(0, 8)} (Logout)`;
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -57,9 +63,16 @@ const Navbar = () => {
             onClick={handletoHome}
           >
             <b>
-              <i>Smart-Tuition</i>
+              <i>{title_display}</i>
             </b>
           </Link>
+          <div>
+            <button className="btn btn-outline-dark mx-2" onClick={handleCart}>
+              <i className="fa-solid fa-cart-shopping"></i>
+              &nbsp;
+              {cart}
+            </button>
+          </div>
           <button
             className="navbar-toggler"
             type="button"
@@ -74,15 +87,6 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <div className="navbar-nav me-auto"></div>
             <form className="d-flex">
-              <button
-                className="btn btn-outline-dark mx-2"
-                onClick={handleCart}
-                //to="/cart"
-              >
-                <i className="fa-solid fa-cart-shopping"></i>
-                &nbsp;
-                {cart}
-              </button>
               <button
                 onClick={handleClickTutor}
                 className="btn btn-outline-dark mx-2"
