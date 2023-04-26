@@ -42,7 +42,7 @@ const Navbar = () => {
     // });
     navigate("/login");
   };
-  localStorage.setItem("studentName", "Vaishnavi");
+  //localStorage.setItem("studentName", "Vaishnavi");
   const nav_display = localStorage.getItem("studentName");
   if (nav_display !== null) {
     var toDisplay = nav_display.split(" ")[0];
