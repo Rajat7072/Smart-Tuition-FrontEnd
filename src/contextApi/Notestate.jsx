@@ -21,6 +21,7 @@ const Notestate = (props) => {
     age_of_taecher: "",
     gender_of_taecher: "",
     taecher_qualification_detail: "",
+    Monthly_Fees: "",
   });
   //console.log(ApiDetail);
   return (
