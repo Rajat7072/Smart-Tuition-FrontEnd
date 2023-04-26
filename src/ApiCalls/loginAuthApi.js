@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 export const loginAuthpush = async ({ Signemail, Signpassword }) => {
   try {
     const response = await axios.post(
-      `${REACT_APP_SERVERURL}/api/login/login-details`,
+      "https://smarttuition.co.in/api/login/login-details",
       {
         Signemail,
         Signpassword,

@@ -11,7 +11,7 @@ export const signupPush = async ({
 }) => {
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_SERVERURL}/api/teacher/teacher-signup`,
+      "https://smarttuition.co.in/api/teacher/teacher-signup",
       {
         firstName,
         lastName,

@@ -8,7 +8,7 @@ export const CartDetailPush = async ({
 }) => {
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_SERVERURL}/api/teacherCart/teacher-cart`,
+      "https://smarttuition.co.in/api/teacherCart/teacher-cart",
       {
         studentName,
         studentPhone,
