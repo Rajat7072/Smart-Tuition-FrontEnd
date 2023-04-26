@@ -361,3 +361,15 @@ code {
     top:20%;
   }
 }
+@media only screen and (max-width:600px){
+.MentorProfileDetail{
+display: flex;
+flex-direction: column;
+}
+.detailprofil{
+  flex-direction: column;
+}
+.profile_data{
+  margin-bottom: 10px;
+}
+}

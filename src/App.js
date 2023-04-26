@@ -15,7 +15,6 @@ import Final from "./components/Final";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import Notestate from "./contextApi/Notestate";
-import TeacherSignUp from "./components/TeacherSignUp";
 import TeacherDetail from "./components/TeacherDetail";
 import AboutMain from "./components/AboutMain";
 import TermsOfUse from "./components/Termsofuse";
@@ -23,6 +22,12 @@ import Termsfortutors from "./components/Termsfortutors";
 import Privacypolicies from "./components/Privacypolicies";
 import PageNotFound from "./components/PageNotFound";
 import ContactUs from "./components/ContactUs";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import TeacherProfileDetail from "./components/TeacherProfileDetail";
+import TeacherCart from "./components/TeacherCart";
+import Holiday from "./components/Holiday";
+// import Modal from "./components/Modal";
 function App() {
   return (
     <>
@@ -31,34 +36,37 @@ function App() {
         <Notestate>
           <Navbar />
           <Routes>
-            <Route>
-              <Route index element={<Welcome />}></Route>
-              <Route path="/step1" element={<Step1 />}></Route>
-              <Route path="/step2" element={<Step2 />}></Route>
-              <Route path="/step3" element={<Step3 />}></Route>
-              <Route path="/step4" element={<Step4 />}></Route>
-              <Route path="/step5" element={<Step5 />}></Route>
-              <Route path="/step6" element={<Step6 />}></Route>
-              <Route path="/step7" element={<Step7 />}></Route>
-              <Route path="/step8" element={<Step8 />}></Route>
-              <Route path="/step9" element={<Step9 />}></Route>
-              <Route path="/step10" element={<Step10 />}></Route>
-              <Route path="/final" element={<Final />}></Route>
-              <Route path="/aboutUs" element={<AboutMain />}></Route>
-              <Route path="/TeacherSignUp" element={<TeacherSignUp />}></Route>
-              <Route path="/TeacherDetails" element={<TeacherDetail />}></Route>
-              <Route path="/Termsofuse" element={<TermsOfUse />}></Route>
-              <Route path="/contactus" element={<ContactUs />}></Route>
-              <Route path="*" element={<PageNotFound />}></Route>
-              <Route
-                path="/Privacypolicies"
-                element={<Privacypolicies />}
-              ></Route>
-              <Route
-                path="/Termsfortutors"
-                element={<Termsfortutors />}
-              ></Route>
-            </Route>
+            <Route index element={<Welcome />}></Route>
+            <Route path="/step1" element={<Step1 />}></Route>
+            <Route path="/step2" element={<Step2 />}></Route>
+            <Route path="/step3" element={<Step3 />}></Route>
+            <Route path="/step4" element={<Step4 />}></Route>
+            <Route path="/step5" element={<Step5 />}></Route>
+            <Route path="/step6" element={<Step6 />}></Route>
+            <Route path="/step7" element={<Step7 />}></Route>
+            <Route path="/step8" element={<Step8 />}></Route>
+            <Route path="/step9" element={<Step9 />}></Route>
+            <Route path="/step10" element={<Step10 />}></Route>
+            <Route path="/final" element={<Final />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/aboutUs" element={<AboutMain />}></Route>
+            <Route path="/TeacherDetails" element={<TeacherDetail />}></Route>
+            <Route path="/Termsofuse" element={<TermsOfUse />}></Route>
+            <Route path="/contactus" element={<ContactUs />}></Route>
+            <Route path="/signup" element={<Signup />}></Route>
+            <Route
+              path="/teacherProfileDetail"
+              element={<TeacherProfileDetail />}
+            ></Route>
+            <Route path="*" element={<PageNotFound />}></Route>
+            <Route
+              path="/Privacypolicies"
+              element={<Privacypolicies />}
+            ></Route>
+            <Route path="/Termsfortutors" element={<Termsfortutors />}></Route>
+            <Route path="/cart" element={<TeacherCart />}></Route>
+            <Route path="/HolidayCalender" element={<Holiday />}></Route>
+            {/* <Route path="/modal" element={<Modal />}></Route> */}
           </Routes>
         </Notestate>
       </BrowserRouter>

@@ -6,38 +6,41 @@ import BackArrow from "./BackArrow";
 import Notecontext from "../contextApi/Notecontext";
 import { detailPush } from "../ApiCalls/detailApi";
 import { useNavigate } from "react-router-dom";
+import Modal from "./Modal";
 
 const Step10 = () => {
   const navigate = useNavigate();
   const step10context = useContext(Notecontext);
   const { ApiDetail, setApiDetail } = step10context;
+  const [modalEnable, setModalEnable] = useState(false);
   const [pref_Text, setpref_Text] = useState({
     remark_if_any: "",
     slot_preference: "",
     age_of_taecher: "",
     gender_of_taecher: "",
     taecher_qualification_detail: "",
+    Monthly_Fees: "",
   });
+
   useEffect(() => {
     if (
-      ApiDetail.subject === "" ||
-      ApiDetail.class_val === "" ||
-      ApiDetail.board === "" ||
-      ApiDetail.zip_address === "" ||
-      ApiDetail.school === "" ||
-      ApiDetail.student_name === "" ||
-      ApiDetail.mobile_number === "" ||
-      ApiDetail.email === "" ||
-      ApiDetail.gender === "" ||
-      ApiDetail.classes_in_a_weak === "" ||
-      ApiDetail.day_preference === "" ||
-      ApiDetail.time_preference === ""
+      ApiDetail?.subject === "" ||
+      ApiDetail?.class_val === "" ||
+      ApiDetail?.board === "" ||
+      ApiDetail?.zip_address === "" ||
+      ApiDetail?.school === "" ||
+      ApiDetail?.student_name === "" ||
+      ApiDetail?.mobile_number === "" ||
+      ApiDetail?.email === "" ||
+      ApiDetail?.gender === "" ||
+      ApiDetail?.classes_in_a_weak === "" ||
+      ApiDetail?.day_preference === "" ||
+      ApiDetail?.time_preference === ""
     ) {
       navigate("/");
-    } // eslint-disable-next-line
-  }, []);
+    }
+  }, [navigate, ApiDetail]);
   const handleClick = async () => {
-    console.log(pref_Text);
     if (ApiDetail.time_preference === "") {
       navigate("/");
       toast(
@@ -56,9 +59,21 @@ const Step10 = () => {
     } else if (
       pref_Text.slot_preference === "" ||
       pref_Text.age_of_taecher === "" ||
-      pref_Text.gender_of_taecher === ""
+      pref_Text.gender_of_taecher === "" ||
+      ApiDetail?.Monthly_Fees === ""
     ) {
       toast.warn("Fields cann't be Empty 🤔", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else if (pref_Text?.taecher_qualification_detail.length > 50) {
+      toast.warn("We do have not any teacher with such a higher Education 😲", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -73,8 +88,11 @@ const Step10 = () => {
         ...ApiDetail,
         ...pref_Text,
       });
-      //console.log(ApiDetail);
+      localStorage.setItem("cartQtyDetails", 0);
+      localStorage.setItem("studentName", ApiDetail?.student_name);
+      localStorage.setItem("ID_Number", ApiDetail?.mobile_number);
       detailPush(ApiDetail);
+      setModalEnable(true);
     }
   };
 
@@ -84,21 +102,20 @@ const Step10 = () => {
       ...ApiDetail,
       ...{ ...pref_Text, [e.target.name]: e.target.value },
     });
-    //console.log(pref_Text);
   };
 
-  const handleSelectTeacher = () => {
-    toast("This feature is under Development! 😅", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
+  // const handleSelectTeacher = () => {
+  //   toast("This feature is under Development! 😅", {
+  //     position: "top-right",
+  //     autoClose: 3000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: "light",
+  //   });
+  // };
   const step10 = true;
   return (
     <>
@@ -281,6 +298,20 @@ const Step10 = () => {
         </div>
         <div style={{ marginTop: "20px" }}>
           <div style={{ marginBottom: "15px" }}>
+            <h5 style={{ color: "blue" }}>Budget (Fees) -Per Month :</h5>
+          </div>
+          <input
+            style={{ width: "100%", border: "none", padding: "5px" }}
+            type="text"
+            placeholder="Eg 2500-3000"
+            name="Monthly_Fees"
+            value={pref_Text?.Monthly_Fees}
+            onChange={handleText}
+          />
+          <hr style={{ color: "blue", marginTop: "0px" }} />
+        </div>
+        <div style={{ marginTop: "20px" }}>
+          <div style={{ marginBottom: "15px" }}>
             <h5 style={{ color: "blue" }}>Qualification Details (if Any) :</h5>
           </div>
           <input
@@ -295,7 +326,7 @@ const Step10 = () => {
         </div>
         <div style={{ marginTop: "20px" }}>
           <div style={{ marginBottom: "15px" }}>
-            <h5 style={{ color: "blue" }}>Remarks :</h5>
+            <h5 style={{ color: "blue" }}>Remarks (if Any) :</h5>
           </div>
           <textarea
             style={{ width: "100%", padding: "5px" }}
@@ -318,22 +349,25 @@ const Step10 = () => {
         >
           {`${pref_Text.remark_if_any?.length}/500`}
         </div>
-        <div
+        {/* <div
           className="Select_hover"
           style={{ width: "30%" }}
           onClick={handleSelectTeacher}
         >
           <b style={{ marginRight: "5px" }}>Click Here To Select Tutor</b>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </div> */}
         <button
-          style={{ marginTop: "50px" }}
           type="button"
+          style={{ marginTop: "50px" }}
           className="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
           onClick={handleClick}
         >
-          Next
+          Submit
         </button>
+        {`${modalEnable}` && <Modal />}
       </div>
     </>
   );

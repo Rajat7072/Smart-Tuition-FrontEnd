@@ -1,38 +1,54 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const contactuspush = async ({ name, mobileNum, emailAdd }) => {
+export const TeacherDetailPush = async ({
+  profileName,
+  profilepicimg,
+  DOB,
+  TGender,
+  Add,
+  Qualification,
+  TSubject,
+  TClasses,
+  AadharCardNum,
+  FeeAsked,
+  TeacherMobile,
+  AgeofTeacher,
+  TeacherExperiance,
+  TeacherAbout,
+}) => {
   try {
     const response = await axios.post(
-      "https://smarttuition.co.in/api/contact/contactus",
+      "https://smarttuition.co.in/detail/teacher-details",
       {
-        name,
-        mobileNum,
-        emailAdd,
+        profileName,
+        profilepicimg,
+        DOB,
+        TGender,
+        Add,
+        Qualification,
+        TSubject,
+        TClasses,
+        AadharCardNum,
+        FeeAsked,
+        TeacherMobile,
+        AgeofTeacher,
+        TeacherExperiance,
+        TeacherAbout,
       },
       {
         headers: {
           "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
         },
       }
     );
-    const json_data = response.data;
+    const json_data = await response.data;
     if (json_data.success === true) {
-      toast.success("we will contact you with in 24 hours", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 3000);
+      localStorage.clear();
+      window.location.href = "/final";
     } else if (json_data.errors) {
-      toast.error(json_data.errors[0].msg, {
+      toast.error(json_data.Error, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -55,13 +71,14 @@ export const contactuspush = async ({ name, mobileNum, emailAdd }) => {
         theme: "light",
         icon: "❗",
       });
+      window.location.href = "/";
+      localStorage.clear();
     }
   } catch (error) {
-    //console.log(error.response.data.errors[0].msg);
-    toast(error.response.data.errors[0].msg, {
+    console.log(error);
+    toast(error, {
       position: "bottom-left",
       icon: "❗",
     });
-    //window.location.href = "/";
   }
 };

@@ -43,6 +43,9 @@ const About = () => {
           <Link to="/Privacypolicies" className="linkStyle">
             <h5>Privacy Policy</h5>
           </Link>
+          <Link to="/HolidayCalender" className="linkStyle">
+            <h5>Holiday Calender</h5>
+          </Link>
           {/* <Link to="/Termsfortutors" className="linkStyle">
             <h5>Terms For Tutors</h5>
           </Link> */}

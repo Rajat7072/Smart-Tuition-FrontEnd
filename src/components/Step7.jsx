@@ -45,7 +45,6 @@ const Step7 = () => {
   };
   const handleText = (e) => {
     setClass_weak(e.target.value);
-    //console.log(class_weak);
   };
   const step7 = true;
   return (

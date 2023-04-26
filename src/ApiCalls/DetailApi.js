@@ -19,6 +19,7 @@ export const detailPush = async ({
   gender_of_taecher,
   taecher_qualification_detail,
   remark_if_any,
+  Monthly_Fees,
 }) => {
   try {
     const response = await axios.post(
@@ -41,6 +42,7 @@ export const detailPush = async ({
         gender_of_taecher,
         taecher_qualification_detail,
         remark_if_any,
+        Monthly_Fees,
       },
       {
         headers: {
@@ -49,12 +51,22 @@ export const detailPush = async ({
       }
     );
     //console.log("Detail Api");
+
     const json_data = await response.data;
     //console.log(json_data);
     if (json_data.success === true) {
-      window.location.href = "/final";
+      toast("Your Enquiry have been submitted successfully with us 😄", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } else if (json_data.errors) {
-      toast.danger(json_data.errors[0].msg, {
+      toast.error(json_data.errors[0].msg, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -66,7 +78,7 @@ export const detailPush = async ({
         icon: "❗",
       });
     } else {
-      toast.danger("Some Error Occurred Please Try after Some Time", {
+      toast.error("Some Error Occurred Please Try after Some Time", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,

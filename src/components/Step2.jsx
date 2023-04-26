@@ -32,7 +32,6 @@ const Step2 = () => {
     } else {
       setApiDetail({ ...ApiDetail, class_val: class_value });
       navigate("/step3");
-      //console.log(class_value);
     }
   };
   const handleChange = (e) => {

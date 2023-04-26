@@ -61,7 +61,6 @@ const ContactUs = () => {
         icon: "🤔",
       });
     } else {
-      //console.log(contactusdetail);
       contactuspush(contactusdetail).then((response) => {
         toast(response, {
           position: "top-right",

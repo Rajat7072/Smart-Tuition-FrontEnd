@@ -9,11 +9,13 @@ import DisplayNext from "./DisplayNext";
 import Achievements from "./Achievements";
 import About from "./About";
 import Footer from "./Footer";
+import MobileNumberContact from "./MobileNumberContact";
 
 const Welcome = () => {
   return (
     <>
       <BlurComponent />
+      <MobileNumberContact />
       <Searchbox />
       <Display />
       <Text />

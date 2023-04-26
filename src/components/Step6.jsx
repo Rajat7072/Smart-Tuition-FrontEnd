@@ -86,7 +86,6 @@ const Step6 = () => {
         email: student_details.email,
         gender: student_details.gender,
       });
-      //console.log(setStudent_details);
       navigate("/step7");
     }
   };

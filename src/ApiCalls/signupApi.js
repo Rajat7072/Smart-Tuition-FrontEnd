@@ -1,14 +1,24 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const contactuspush = async ({ name, mobileNum, emailAdd }) => {
+export const signupPush = async ({
+  firstName,
+  lastName,
+  Signemail,
+  mobileNumber,
+  Signpassword,
+  Signcpassword,
+}) => {
   try {
     const response = await axios.post(
-      "https://smarttuition.co.in/api/contact/contactus",
+      `${process.env.REACT_APP_SERVERURL}/api/teacher/teacher-signup`,
       {
-        name,
-        mobileNum,
-        emailAdd,
+        firstName,
+        lastName,
+        Signemail,
+        mobileNumber,
+        Signpassword,
+        Signcpassword,
       },
       {
         headers: {
@@ -17,8 +27,9 @@ export const contactuspush = async ({ name, mobileNum, emailAdd }) => {
       }
     );
     const json_data = response.data;
+    console.log(json_data);
     if (json_data.success === true) {
-      toast.success("we will contact you with in 24 hours", {
+      toast.success("Details Saved Successfully", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -27,12 +38,12 @@ export const contactuspush = async ({ name, mobileNum, emailAdd }) => {
         draggable: true,
         progress: undefined,
         theme: "light",
+        icon: "😀",
       });
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 3000);
-    } else if (json_data.errors) {
-      toast.error(json_data.errors[0].msg, {
+      localStorage.setItem("token", json_data.token);
+      window.location.href = "/TeacherDetails";
+    } else if (json_data.success === false) {
+      toast.error(json_data.value, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -55,13 +66,13 @@ export const contactuspush = async ({ name, mobileNum, emailAdd }) => {
         theme: "light",
         icon: "❗",
       });
+      window.location.href = "/";
     }
   } catch (error) {
-    //console.log(error.response.data.errors[0].msg);
-    toast(error.response.data.errors[0].msg, {
+    console.log(error);
+    toast(error, {
       position: "bottom-left",
       icon: "❗",
     });
-    //window.location.href = "/";
   }
 };

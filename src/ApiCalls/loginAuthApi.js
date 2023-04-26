@@ -1,14 +1,13 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const contactuspush = async ({ name, mobileNum, emailAdd }) => {
+export const loginAuthpush = async ({ Signemail, Signpassword }) => {
   try {
     const response = await axios.post(
-      "https://smarttuition.co.in/api/contact/contactus",
+      `${REACT_APP_SERVERURL}/api/login/login-details`,
       {
-        name,
-        mobileNum,
-        emailAdd,
+        Signemail,
+        Signpassword,
       },
       {
         headers: {
@@ -17,8 +16,10 @@ export const contactuspush = async ({ name, mobileNum, emailAdd }) => {
       }
     );
     const json_data = response.data;
+    console.log(json_data);
     if (json_data.success === true) {
-      toast.success("we will contact you with in 24 hours", {
+      console.log(json_data);
+      toast.success("Please wait we are fetching Your Details", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -28,9 +29,6 @@ export const contactuspush = async ({ name, mobileNum, emailAdd }) => {
         progress: undefined,
         theme: "light",
       });
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 3000);
     } else if (json_data.errors) {
       toast.error(json_data.errors[0].msg, {
         position: "top-right",
@@ -57,11 +55,9 @@ export const contactuspush = async ({ name, mobileNum, emailAdd }) => {
       });
     }
   } catch (error) {
-    //console.log(error.response.data.errors[0].msg);
     toast(error.response.data.errors[0].msg, {
       position: "bottom-left",
       icon: "❗",
     });
-    //window.location.href = "/";
   }
 };

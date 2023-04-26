@@ -38,6 +38,11 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>
+      window.addEventListener("beforeunload", function () {
+        localStorage.clear();
+      });
+    </script>
     <!-- <script
       async
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlngfM3m-PBv_xtnBuN0T0h6Vwgh2tkEY&libraries=places&callback=initAutocomplete"

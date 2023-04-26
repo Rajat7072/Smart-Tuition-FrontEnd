@@ -16,7 +16,6 @@ const Step1 = () => {
 
   const step1 = true;
   const handleClick = () => {
-    //console.log(select_subject);
     if (select_subject === "Please confirm your Subject") {
       toast("Please select your subject! 😕", {
         position: "top-center",
@@ -29,7 +28,6 @@ const Step1 = () => {
         theme: "light",
       });
     } else {
-      //console.log(select_subject);
       setApiDetail({ ...ApiDetail, subject: select_subject });
       navigate("/step2");
     }
@@ -72,11 +70,23 @@ const Step1 = () => {
             <option value="Physics">Physics</option>
             <option value="Chemistry">Chemistry</option>
             <option value="Biology">Biology</option>
+            <option value="Science(Physics,Chemistry,Biology)">
+              Science(Physics,Chemistry,Biology)
+            </option>
             <option value="Hindi">Hindi</option>
+            <option value="Science(Physics,Chemistry,Mathematics)">
+              Science(Physics,Chemistry,Mathematics)
+            </option>
             <option value="Commerce">Commerce</option>
             <option value="Accounts">Accounts</option>
-            <option value="Accountancy">Accountancy</option>
+            <option value="Economics">Economics</option>
+            <option value="Humanities(History,Geography,Political Science)">
+              Humanities(History,Geography,Political Science)
+            </option>
             <option value="Business Studies">Business Studies</option>
+            <option value="Science(Physics,Chemistry)">
+              Science(Physics,Chemistry)
+            </option>
             <option value="Informatics Practices">Informatics Practices</option>
             <option value="Entrepreneurship">Entrepreneurship</option>
             <option value="Fashion Studies">Fashion Studies</option>
