@@ -60,7 +60,7 @@ const Step10 = () => {
       pref_Text.slot_preference === "" ||
       pref_Text.age_of_taecher === "" ||
       pref_Text.gender_of_taecher === "" ||
-      ApiDetail?.Monthly_Fees === ""
+      pref_Text?.Monthly_Fees === ""
     ) {
       toast.warn("Fields cann't be Empty 🤔", {
         position: "top-center",
