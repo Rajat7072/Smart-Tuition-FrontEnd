@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import BackArrow from "./BackArrow";
 import Notecontext from "../contextApi/Notecontext";
-import { detailPush } from "../ApiCalls/detailApi";
+import { detailPush } from "../ApiCalls/DetailApi";
 import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 
