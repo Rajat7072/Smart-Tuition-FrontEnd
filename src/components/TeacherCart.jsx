@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart } from "../createSlice/techSlice";
 import { useNavigate } from "react-router-dom";
 import { CartDetailPush } from "../ApiCalls/CartDetailApi";
-import BackArrow from "./BackArrow";
+import Previous from "../images/previous.png";
 
 const TeacherCart = () => {
   const [myVarAble, setMyVarAble] = useState(true);
