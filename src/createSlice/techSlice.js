@@ -21,11 +21,12 @@ const cartSlice = createSlice({
       if (state.cartQty >= 5) {
         toast.info("Maximum five teachers can be added for DEMO", {
           position: "bottom-left",
+          autoClose: 1500,
         });
       } else if (index >= 0) {
         toast.info("This Mentor is Already available in your Cart", {
           position: "bottom-right",
-          autoClose: 1000,
+          autoClose: 1500,
         });
       } else {
         state.cartQty += 1;
@@ -37,7 +38,7 @@ const cartSlice = createSlice({
           `Mentor ${action.payload.profileName} added successfully for Demo`,
           {
             position: "bottom-right",
-            autoClose: 1000,
+            autoClose: 1500,
           }
         );
       }
@@ -50,6 +51,7 @@ const cartSlice = createSlice({
       localStorage.setItem("cartItems", JSON.stringify(state.teacherCart));
       toast.error(`${action.payload.profileName} removed successfully`, {
         position: "bottom-left",
+        autoClose: 1500,
       });
       state.cartQty -= 1;
       localStorage.setItem("cartQtyDetails", JSON.stringify(state.cartQty));

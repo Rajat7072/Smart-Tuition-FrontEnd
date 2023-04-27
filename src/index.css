@@ -260,6 +260,10 @@ code {
   top: -1px;
   cursor: pointer;
 }
+.logout:hover{
+  position: relative;
+  top: -1px; 
+}
 .BREADCRUMB{
   display: flex;
   justify-content: center;

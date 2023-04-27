@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+import logoutImg from "../images/logout.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -42,17 +43,20 @@ const Navbar = () => {
     // });
     navigate("/login");
   };
-  //localStorage.setItem("studentName", "Vaishnavi");
+
+  //localStorage.setItem("studentName", "wwwww");
   const nav_display = localStorage.getItem("studentName");
-  if (nav_display !== null) {
-    var toDisplay = nav_display.split(" ")[0];
-  }
+  // if (nav_display !== null) {
+  //   var toDisplay = nav_display.split(" ")[0];
+  // }
   const title_display =
-    nav_display === null
-      ? "Smart-Tuition"
-      : toDisplay.length > 8
-      ? `${toDisplay.substring(0, 5)}...(Logout)`
-      : `${toDisplay.substring(0, 8)} (Logout)`;
+    nav_display === null ? (
+      "Smart-Tuition"
+    ) : (
+      <div className="logout" style={{ display: "flex", height: "45px" }}>
+        <img src={logoutImg} alt="Logout" />
+      </div>
+    );
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
