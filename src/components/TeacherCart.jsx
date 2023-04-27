@@ -49,7 +49,14 @@ const TeacherCart = () => {
   return (
     <>
       <div style={{ padding: "5px", display: "flex" }}>
-        <BackArrow />
+        <img
+          className="previous_arrow"
+          src={Previous}
+          alt="Back"
+          onClick={() => {
+            navigate("/teacherProfileDetail");
+          }}
+        />
       </div>
       {data.teacherCart.length === 0 ? (
         <div
