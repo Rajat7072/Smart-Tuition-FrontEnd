@@ -23,7 +23,7 @@ export const detailPush = async ({
 }) => {
   try {
     const response = await axios.post(
-      "https://smarttuition.co.in/api/details/student-detail",
+      `${process.env.REACT_APP_URL}/api/details/student-detail`,
       {
         subject,
         class_val,
@@ -92,7 +92,7 @@ export const detailPush = async ({
       window.location.href = "/";
     }
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     toast(error.response.data.errors[0].msg, {
       position: "bottom-left",
       icon: "❗",

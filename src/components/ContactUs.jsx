@@ -3,6 +3,7 @@ import { useState } from "react";
 //import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { contactuspush } from "../ApiCalls/contactusApi";
+import BackArrow from "./BackArrow";
 const ContactUs = () => {
   //const navigate = useNavigate();
   const [contactusdetail, setContactusdetail] = useState({
@@ -82,6 +83,7 @@ const ContactUs = () => {
   return (
     <>
       <hr style={{ marginTop: "0px", marginBottom: "0px", color: "red" }} />
+
       <div
         style={{
           backgroundColor: "wheat",
@@ -119,7 +121,8 @@ const ContactUs = () => {
           </h5>
         </div>
       </div>
-      <hr style={{ marginTop: "0px", marginBottom: "40px", color: "red" }} />
+      <hr style={{ marginTop: "0px", marginBottom: "10px", color: "red" }} />
+      <BackArrow />
       <div className="step2">
         <div style={{ display: "flex", justifyContent: "center" }}>
           <h2 className="desired_loc_head">

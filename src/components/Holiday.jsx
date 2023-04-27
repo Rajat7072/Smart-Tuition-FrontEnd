@@ -1,10 +1,11 @@
 import React from "react";
+import BackArrow from "./BackArrow";
 
 const Holiday = () => {
   return (
     <>
       <hr style={{ marginTop: "0px" }} />
-
+      <BackArrow />
       <div style={{ padding: "5px" }}>
         <div
           style={{

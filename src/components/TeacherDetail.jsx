@@ -9,7 +9,7 @@ const TeacherDetail = () => {
   //var FinalAadhar = "";
   const navigate = useNavigate();
   const name_of_techer = localStorage.getItem("nameData");
-  console.log(name_of_techer);
+  //console.log(name_of_techer);
   const currentDate = new Date().toISOString().split("T")[0];
   const [teacherDetail, setTeacherDetail] = useState({
     profileName: name_of_techer,
@@ -76,7 +76,7 @@ const TeacherDetail = () => {
   const handleChange = (e) => {
     e.preventDefault();
     setTeacherDetail({ ...teacherDetail, [e.target.name]: e.target.value });
-    console.log(teacherDetail);
+    //console.log(teacherDetail);
   };
   useEffect(() => {
     setTeacherDetail({
@@ -96,7 +96,7 @@ const TeacherDetail = () => {
   }, [AddressTeacher]);
 
   const handleSubmit = (e) => {
-    console.log(teacherDetail);
+    //console.log(teacherDetail);
     e.preventDefault();
     if (teacherDetail?.profilepicimg === "") {
       toast("Profile Picture is Required", {

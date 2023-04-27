@@ -3,8 +3,9 @@ import { toast } from "react-toastify";
 
 export const contactuspush = async ({ name, mobileNum, emailAdd }) => {
   try {
+    //console.log("process", process.env.API_URL);
     const response = await axios.post(
-      "https://smarttuition.co.in/api/contact/contactus",
+      `${process.env.REACT_APP_URL}/api/contact/contactus`,
       {
         name,
         mobileNum,

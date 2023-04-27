@@ -7,8 +7,9 @@ export const CartDetailPush = async ({
   teacherDetails,
 }) => {
   try {
+    //console.log(process.env.REACT_APP_URL);
     const response = await axios.post(
-      "https://smarttuition.co.in/api/teacherCart/teacher-cart",
+      `${process.env.REACT_APP_URL}/api/teacherCart/teacher-cart`,
       {
         studentName,
         studentPhone,
@@ -21,6 +22,7 @@ export const CartDetailPush = async ({
       }
     );
     const json_data = await response.data;
+    //console.log("JSON DATA", json_data);
     if (json_data.success === true) {
       window.location.href = "/final";
       localStorage.clear();
@@ -48,11 +50,11 @@ export const CartDetailPush = async ({
         theme: "light",
         icon: "❗",
       });
-      window.location.href = "/";
-      localStorage.clear();
+      //window.location.href = "/";
+      //localStorage.clear();
     }
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     toast(error, {
       position: "bottom-left",
       icon: "❗",

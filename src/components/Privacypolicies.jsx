@@ -1,10 +1,12 @@
 import React from "react";
 import Footer from "./Footer";
+import BackArrow from "./BackArrow";
 
 const Privacypolicies = () => {
   return (
     <>
       <hr style={{ marginTop: "0px" }} />
+      <BackArrow />
       <div style={{ padding: "13px" }}>
         <h2 style={{ textAlign: "center" }}>
           <b>PRIVACY POLICY</b>

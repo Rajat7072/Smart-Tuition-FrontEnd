@@ -1,10 +1,12 @@
 import React from "react";
 import Footer from "./Footer";
+import BackArrow from "./BackArrow";
 
 const AboutMain = () => {
   return (
     <>
       <hr style={{ marginTop: "0px" }} />
+      <BackArrow />
       <div className="step1" style={{ marginTop: "50px" }}>
         <h3>About Us</h3>
         <p>

@@ -1,10 +1,12 @@
 import React from "react";
 import Footer from "./Footer";
+import BackArrow from "./BackArrow";
 
 const TermsOfUse = () => {
   return (
     <>
       <hr style={{ marginTop: "0px" }} />
+      <BackArrow />
       <div className="step2">
         <h3>Terms of Use</h3>
         <p>

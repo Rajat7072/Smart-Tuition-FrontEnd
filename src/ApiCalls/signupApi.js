@@ -11,7 +11,7 @@ export const signupPush = async ({
 }) => {
   try {
     const response = await axios.post(
-      "https://smarttuition.co.in/api/teacher/teacher-signup",
+      `${process.env.REACT_APP_URL}/api/teacher/teacher-signup`,
       {
         firstName,
         lastName,
@@ -27,7 +27,7 @@ export const signupPush = async ({
       }
     );
     const json_data = response.data;
-    console.log(json_data);
+    //console.log(json_data);
     if (json_data.success === true) {
       toast.success("Details Saved Successfully", {
         position: "top-right",
@@ -69,7 +69,7 @@ export const signupPush = async ({
       window.location.href = "/";
     }
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     toast(error, {
       position: "bottom-left",
       icon: "❗",

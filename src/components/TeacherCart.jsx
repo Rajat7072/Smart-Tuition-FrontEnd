@@ -6,6 +6,7 @@ import { removeFromCart } from "../createSlice/techSlice";
 import { useNavigate } from "react-router-dom";
 import { CartDetailPush } from "../ApiCalls/CartDetailApi";
 import Previous from "../images/previous.png";
+import { toast } from "react-toastify";
 
 const TeacherCart = () => {
   const [myVarAble, setMyVarAble] = useState(true);
@@ -43,8 +44,14 @@ const TeacherCart = () => {
     let age = currentDate.getFullYear() - dob.getFullYear();
     return age;
   };
-  const handleSubmitData = () => {
-    CartDetailPush(teacherCart);
+  const resolveAfter3Sec = new Promise((resolve) => setTimeout(resolve, 3000));
+  const handleSubmitData = async () => {
+    await CartDetailPush(teacherCart);
+    toast.promise(resolveAfter3Sec, {
+      pending: "Please wait we are processing your request",
+      success: "Enquiry Submitted Successfully 👌",
+      error: "Due to high demand we can not process your request 🤯",
+    });
   };
   return (
     <>

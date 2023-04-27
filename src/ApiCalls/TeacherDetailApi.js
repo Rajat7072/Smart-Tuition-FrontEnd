@@ -19,7 +19,7 @@ export const TeacherDetailPush = async ({
 }) => {
   try {
     const response = await axios.post(
-      "https://smarttuition.co.in/detail/teacher-details",
+      `${process.env.REACT_APP_URL}/detail/teacher-details`,
       {
         profileName,
         profilepicimg,
@@ -75,7 +75,7 @@ export const TeacherDetailPush = async ({
       localStorage.clear();
     }
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     toast(error, {
       position: "bottom-left",
       icon: "❗",

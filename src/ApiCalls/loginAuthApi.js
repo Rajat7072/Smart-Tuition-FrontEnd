@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 export const loginAuthpush = async ({ Signemail, Signpassword }) => {
   try {
     const response = await axios.post(
-      "https://smarttuition.co.in/api/login/login-details",
+      `${process.env.REACT_APP_URL}/api/login/login-details`,
       {
         Signemail,
         Signpassword,
@@ -16,9 +16,9 @@ export const loginAuthpush = async ({ Signemail, Signpassword }) => {
       }
     );
     const json_data = response.data;
-    console.log(json_data);
+    //console.log(json_data);
     if (json_data.success === true) {
-      console.log(json_data);
+      //console.log(json_data);
       toast.success("Please wait we are fetching Your Details", {
         position: "top-right",
         autoClose: 3000,
