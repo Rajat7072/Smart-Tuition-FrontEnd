@@ -1,10 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { signupPush } from "../ApiCalls/signupApi";
+import { useEffect } from "react";
 
 const Signup = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const loggedusername = localStorage.getItem("nameData");
+    const loggeduserphone = localStorage.getItem("phoneData");
+    const tokenValue = localStorage.getItem("token");
+    if (
+      loggedusername !== null &&
+      loggeduserphone !== null &&
+      tokenValue !== null
+    ) {
+      navigate("TeacherDetails");
+    }
+  }, [navigate]);
+
   const [signupDeatails, setSignupDetails] = useState({
     firstName: "",
     lastName: "",
@@ -89,6 +104,7 @@ const Signup = () => {
         "nameData",
         `${signupDeatails?.firstName} ${signupDeatails?.lastName}`
       );
+      localStorage.setItem("phoneData", `${signupDeatails?.mobileNumber}`);
       signupPush(signupDeatails);
     }
   };

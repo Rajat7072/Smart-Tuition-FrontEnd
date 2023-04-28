@@ -62,7 +62,7 @@ const Step10 = () => {
       pref_Text.gender_of_taecher === "" ||
       pref_Text?.Monthly_Fees === ""
     ) {
-      toast.warn("Fields cann't be Empty 🤔", {
+      toast.warn("Please Fill All the Details 🤔", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,

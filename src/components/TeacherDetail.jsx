@@ -9,6 +9,7 @@ const TeacherDetail = () => {
   //var FinalAadhar = "";
   const navigate = useNavigate();
   const name_of_techer = localStorage.getItem("nameData");
+  const phone_of_teacher = localStorage.getItem("phoneData");
   //console.log(name_of_techer);
   const currentDate = new Date().toISOString().split("T")[0];
   const [teacherDetail, setTeacherDetail] = useState({
@@ -22,7 +23,7 @@ const TeacherDetail = () => {
     TClasses: "",
     AadharCardNum: "",
     FeeAsked: "",
-    TeacherMobile: "",
+    TeacherMobile: phone_of_teacher,
     TeacherExperiance: "",
     TeacherAbout: "",
   });
@@ -173,7 +174,7 @@ const TeacherDetail = () => {
       teacherDetail?.TClasses === "" ||
       teacherDetail?.TeacherAbout === ""
     ) {
-      toast("Feilds can not be Empty", {
+      toast("Please fill All the Details", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -394,7 +395,7 @@ const TeacherDetail = () => {
                 type="text"
                 className="form-control"
                 id="exampleInputSubject"
-                placeholder="Eg: 1000-2000 Per Hour"
+                placeholder="Eg: 1000-2000 Per Month"
                 name="FeeAsked"
                 value={teacherDetail?.FeeAsked}
                 onChange={handleChange}
@@ -412,7 +413,8 @@ const TeacherDetail = () => {
                 maxLength="10"
                 value={teacherDetail?.TeacherMobile}
                 placeholder="Eg : 8707258661"
-                onChange={handleChange}
+                readOnly
+                //onChange={handleChange}
               />
             </div>
             <div className="mb-3 my-3">

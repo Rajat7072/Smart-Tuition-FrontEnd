@@ -17,9 +17,11 @@ export const TeacherDetailPush = async ({
   TeacherExperiance,
   TeacherAbout,
 }) => {
+  //console.log("Hi Wala");
   try {
+    //console.log("Rajat");
     const response = await axios.post(
-      `${process.env.REACT_APP_URL}/detail/teacher-details`,
+      `${process.env.REACT_APP_URL}/api/detail/teacher-details`,
       {
         profileName,
         profilepicimg,
@@ -44,6 +46,7 @@ export const TeacherDetailPush = async ({
       }
     );
     const json_data = await response.data;
+    //console.log("This data is ", json_data);
     if (json_data.success === true) {
       localStorage.clear();
       window.location.href = "/final";

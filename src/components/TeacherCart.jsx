@@ -44,14 +44,20 @@ const TeacherCart = () => {
     let age = currentDate.getFullYear() - dob.getFullYear();
     return age;
   };
-  const resolveAfter3Sec = new Promise((resolve) => setTimeout(resolve, 3000));
+  //const resolveAfter3Sec = new Promise((resolve) => setTimeout(resolve, 3000));
   const handleSubmitData = async () => {
-    await CartDetailPush(teacherCart);
-    toast.promise(resolveAfter3Sec, {
-      pending: "Please wait we are processing your request",
-      success: "Enquiry Submitted Successfully 👌",
-      error: "Due to high demand we can not process your request 🤯",
+    toast("success: Please wait we are processing your request 👌", {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      icon: "✅",
     });
+    await CartDetailPush(teacherCart);
   };
   return (
     <>

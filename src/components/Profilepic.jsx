@@ -10,9 +10,11 @@ const Profilepic = (probs) => {
     const file = e.target.files[0];
     const reader = new FileReader();
     let fileSize = file.size / 1e6;
-    const fileFormat = file.name.split(".")[1];
+    const lengthPro = file.name.split(".").length - 1;
+    //console.log(lengthPro);
+    const fileFormat = file.name.split(".")[lengthPro];
     if (fileSize > 5) {
-      toast("Max file size supported be 5MB", {
+      toast("Max file size supported is 5MB", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,

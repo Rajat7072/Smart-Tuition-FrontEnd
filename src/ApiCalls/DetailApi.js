@@ -55,16 +55,19 @@ export const detailPush = async ({
     const json_data = await response.data;
     //console.log(json_data);
     if (json_data.success === true) {
-      toast("Your Enquiry have been submitted successfully with us 😄", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast(
+        "Please wait Your Enquiry have been submitted successfully with us 😄",
+        {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
     } else if (json_data.errors) {
       toast.error(json_data.errors[0].msg, {
         position: "top-right",

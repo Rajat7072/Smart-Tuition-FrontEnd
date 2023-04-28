@@ -34,8 +34,9 @@ const TermsOfUse = () => {
           course of action of account of victims shall be applicable to accused.
         </p>
         <p>
-          7. Smart-Tuition reserves the right to change the terms and conditions
-          anytime and you will be bound to accept it.
+          7. On The Top of the above this website is learning and testing
+          purpose we are not claiming anything Data available on the website
+          might be incorrect.
         </p>
         <p>8. After demo of 2 classes you have to confirm about the tutor.</p>
         <p>
