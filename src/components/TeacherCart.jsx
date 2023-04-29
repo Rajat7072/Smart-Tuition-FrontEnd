@@ -95,18 +95,33 @@ const TeacherCart = () => {
             }}
           >
             <div style={{ marginRight: "20px" }}>
-              <img
-                style={{
-                  borderRadius: "10%",
-                  border: "1px solid black",
-                  marginTop: "20px",
-                  width: "110px",
-                  height: "110px",
-                  padding: "5px",
-                }}
-                src={element.profilepicimg}
-                alt={ppl}
-              />
+              {element.profilepicimg ? (
+                <img
+                  style={{
+                    borderRadius: "10%",
+                    border: "1px solid black",
+                    marginTop: "20px",
+                    width: "110px",
+                    height: "110px",
+                    padding: "5px",
+                  }}
+                  src={element.profilepicimg}
+                  alt="profile picture"
+                />
+              ) : (
+                <img
+                  style={{
+                    borderRadius: "10%",
+                    border: "1px solid black",
+                    marginTop: "20px",
+                    width: "110px",
+                    height: "110px",
+                    padding: "5px",
+                  }}
+                  src={ppl}
+                  alt="Default Image"
+                />
+              )}
             </div>
             <div>
               <div className="card-body">

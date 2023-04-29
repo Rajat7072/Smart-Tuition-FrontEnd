@@ -99,19 +99,20 @@ const TeacherDetail = () => {
   const handleSubmit = (e) => {
     //console.log(teacherDetail);
     e.preventDefault();
-    if (teacherDetail?.profilepicimg === "") {
-      toast("Profile Picture is Required", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        icon: "😅",
-      });
-    } else if (
+    // if (teacherDetail?.profilepicimg === "") {
+    //   toast("Profile Picture is Required", {
+    //     position: "top-right",
+    //     autoClose: 3000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //     icon: "😅",
+    //   });
+    // } else
+    if (
       AadharNum?.Aadhar1 === "" ||
       AadharNum?.Aadhar2 === "" ||
       AadharNum?.Aadhar3 === "" ||
@@ -198,6 +199,12 @@ const TeacherDetail = () => {
         icon: "😅",
       });
     } else {
+      toast("✅ Please wait we are Processing your Request", {
+        position: "bottom-right",
+        autoClose: 2500,
+        theme: "light",
+        icon: "😅",
+      });
       TeacherDetailPush(teacherDetail);
       //console.log(teacherDetail);
     }

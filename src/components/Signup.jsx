@@ -16,7 +16,7 @@ const Signup = () => {
       loggeduserphone !== null &&
       tokenValue !== null
     ) {
-      navigate("TeacherDetails");
+      navigate("/TeacherDetails");
     }
   }, [navigate]);
 

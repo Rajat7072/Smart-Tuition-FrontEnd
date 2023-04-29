@@ -46,11 +46,15 @@ const Navbar = () => {
 
   //localStorage.setItem("studentName", "wwwww");
   const nav_display = localStorage.getItem("studentName");
+  const nav_teacher_name = localStorage.getItem("nameData");
+  const nav_teacher_phone = localStorage.getItem("nameData");
   // if (nav_display !== null) {
   //   var toDisplay = nav_display.split(" ")[0];
   // }
   const title_display =
-    nav_display === null ? (
+    nav_display === null &&
+    nav_teacher_name === null &&
+    nav_teacher_phone === null ? (
       "Smart-Tuition"
     ) : (
       <div className="logout" style={{ display: "flex", height: "45px" }}>
