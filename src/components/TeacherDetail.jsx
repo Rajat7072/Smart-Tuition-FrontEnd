@@ -197,7 +197,7 @@ const TeacherDetail = () => {
         icon: "😅",
       });
     } else {
-      console.log(teacherDetail);
+      //console.log(teacherDetail);
       toast("✅ Please wait we are Processing your Request", {
         position: "bottom-right",
         autoClose: 2500,
