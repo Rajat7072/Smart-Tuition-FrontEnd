@@ -55,7 +55,6 @@ const TeacherDetail = () => {
     Aadhar1: "",
     Aadhar2: "",
     Aadhar3: "",
-    Aadhar4: "",
   });
   const handleAadhar = (e) => {
     e.preventDefault();
@@ -83,7 +82,7 @@ const TeacherDetail = () => {
     setTeacherDetail({
       ...teacherDetail,
       // eslint-disable-next-line
-      ["AadharCardNum"]: `${AadharNum.Aadhar1} - ${AadharNum.Aadhar2} - ${AadharNum.Aadhar3} - ${AadharNum.Aadhar4}`,
+      ["AadharCardNum"]: `${AadharNum.Aadhar1} - ${AadharNum.Aadhar2} - ${AadharNum.Aadhar3}`,
     });
     // eslint-disable-next-line
   }, [AadharNum]);
@@ -119,8 +118,7 @@ const TeacherDetail = () => {
       AadharNum?.Aadhar4 === "" ||
       isNaN(AadharNum?.Aadhar1) ||
       isNaN(AadharNum?.Aadhar2) ||
-      isNaN(AadharNum?.Aadhar3) ||
-      isNaN(AadharNum?.Aadhar4)
+      isNaN(AadharNum?.Aadhar3)
     ) {
       toast("Please Enter A valid Aadhar Card Number", {
         position: "top-right",
@@ -199,6 +197,7 @@ const TeacherDetail = () => {
         icon: "😅",
       });
     } else {
+      console.log(teacherDetail);
       toast("✅ Please wait we are Processing your Request", {
         position: "bottom-right",
         autoClose: 2500,
@@ -384,7 +383,7 @@ const TeacherDetail = () => {
                 //value={teacherDetail?.AadharCardNum?.Aadhar3}
                 onChange={handleAadhar}
               />
-              <input
+              {/* <input
                 type="text"
                 className="form-control"
                 placeholder="0000"
@@ -392,7 +391,7 @@ const TeacherDetail = () => {
                 name="Aadhar4"
                 //value={teacherDetail?.AadharCardNum?.Aadhar4}
                 onChange={handleAadhar}
-              />
+              /> */}
             </div>
             <div className="mb-3 my-3">
               <label htmlFor="exampleInputSubject" className="form-label">
