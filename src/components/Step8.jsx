@@ -43,7 +43,7 @@ const Step8 = () => {
           theme: "light",
         }
       );
-    } else if (day === "") {
+    } else if (day.length === 0) {
       toast("Please Enter your Days Preference 🤔", {
         position: "top-center",
         autoClose: 3000,

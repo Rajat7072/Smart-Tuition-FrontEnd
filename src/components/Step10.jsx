@@ -6,13 +6,13 @@ import BackArrow from "./BackArrow";
 import Notecontext from "../contextApi/Notecontext";
 import { detailPush } from "../ApiCalls/DetailApi";
 import { useNavigate } from "react-router-dom";
-import Modal from "./Modal";
+// import Modal from "./Modal";
 
 const Step10 = () => {
   const navigate = useNavigate();
   const step10context = useContext(Notecontext);
   const { ApiDetail, setApiDetail } = step10context;
-  const [modalEnable, setModalEnable] = useState(false);
+  // const [modalEnable, setModalEnable] = useState(false);
   const [pref_Text, setpref_Text] = useState({
     remark_if_any: "",
     slot_preference: "",
@@ -40,6 +40,7 @@ const Step10 = () => {
       navigate("/");
     }
   }, [navigate, ApiDetail]);
+
   const handleClick = async () => {
     if (ApiDetail.time_preference === "") {
       navigate("/");
@@ -92,7 +93,7 @@ const Step10 = () => {
       localStorage.setItem("studentName", ApiDetail?.student_name);
       localStorage.setItem("ID_Number", ApiDetail?.mobile_number);
       detailPush(ApiDetail);
-      setModalEnable(true);
+      navigate("/modal");
     }
   };
 
@@ -361,13 +362,11 @@ const Step10 = () => {
           type="button"
           style={{ marginTop: "50px" }}
           className="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
           onClick={handleClick}
         >
           Submit
         </button>
-        {`${modalEnable}` && <Modal />}
+        {/* {{ modalEnable } === true && <Modal />} */}
       </div>
     </>
   );

@@ -28,7 +28,7 @@ const Step7 = () => {
   }, []);
   const handleClick = () => {
     if (class_weak === "") {
-      toast.warn("Fields cann't be Empty 🤔", {
+      toast.warn("Please Select the Number of Classes in a weak Required 🤔", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,

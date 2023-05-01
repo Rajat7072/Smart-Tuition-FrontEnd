@@ -27,6 +27,7 @@ import Signup from "./components/Signup";
 import TeacherProfileDetail from "./components/TeacherProfileDetail";
 import TeacherCart from "./components/TeacherCart";
 import Holiday from "./components/Holiday";
+import Modal from "./components/Modal";
 // import Modal from "./components/Modal";
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
             <Route path="/Termsofuse" element={<TermsOfUse />}></Route>
             <Route path="/contactus" element={<ContactUs />}></Route>
             <Route path="/signup" element={<Signup />}></Route>
+            <Route path="/modal" element={<Modal />}></Route>
             <Route
               path="/teacherProfileDetail"
               element={<TeacherProfileDetail />}

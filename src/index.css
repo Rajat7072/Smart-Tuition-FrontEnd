@@ -304,6 +304,13 @@ code {
   border-radius: 5px;
   background: white;
 }
+.selectTeachersButtons{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 55%;
+  left: 40%;
+}
 
 @media only screen and (max-width:850px){
   .Student_is_radio{
@@ -385,5 +392,9 @@ flex-direction: column;
 }
 .profile_data{
   margin-bottom: 10px;
+}
+.selectTeachersButtons{
+  top: 33%;
+  left: 18%;
 }
 }
