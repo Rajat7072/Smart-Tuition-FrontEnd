@@ -28,6 +28,7 @@ import TeacherProfileDetail from "./components/TeacherProfileDetail";
 import TeacherCart from "./components/TeacherCart";
 import Holiday from "./components/Holiday";
 import Modal from "./components/Modal";
+import StudentRequirement from "./components/StudentRequirement";
 // import Modal from "./components/Modal";
 function App() {
   return (
@@ -68,6 +69,10 @@ function App() {
             <Route path="/Termsfortutors" element={<Termsfortutors />}></Route>
             <Route path="/cart" element={<TeacherCart />}></Route>
             <Route path="/HolidayCalender" element={<Holiday />}></Route>
+            <Route
+              path="/studentRequirement"
+              element={<StudentRequirement />}
+            ></Route>
             {/* <Route path="/modal" element={<Modal />}></Route> */}
           </Routes>
         </Notestate>

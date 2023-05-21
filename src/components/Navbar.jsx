@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import logoutImg from "../images/logout.png";
+import click from "../images/click.gif";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -32,6 +33,10 @@ const Navbar = () => {
     } else {
       navigate("/cart");
     }
+  };
+  const handleRequirememnt = (e) => {
+    e.preventDefault();
+    navigate("/studentRequirement");
   };
   const handleClickBecomeATutor = (e) => {
     e.preventDefault();
@@ -75,10 +80,25 @@ const Navbar = () => {
             </b>
           </Link>
           <div>
-            <button className="btn btn-outline-dark mx-2" onClick={handleCart}>
+            <button
+              className="btn btn-outline-dark mx-2"
+              onClick={handleCart}
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <i className="fa-solid fa-cart-shopping"></i>
               &nbsp;
               {cart}
+              <img
+                style={{
+                  display: "flex",
+                  height: "30px",
+                }}
+                src={click}
+                alt="NA"
+              />
             </button>
           </div>
           <button
@@ -93,30 +113,38 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div className="navbar-nav me-auto"></div>
-            <form className="d-flex">
+            <div className="ms-auto">
               <button
                 onClick={handleClickTutor}
-                className="btn btn-outline-dark mx-2"
+                className="btn btn-outline-dark mx-1 my-2"
               >
                 <i className="fa-solid fa-chalkboard-user"></i>
-                &nbsp; Teacher's Profile
+                &nbsp; Mentor's Profile
+              </button>
+              <button
+                //onClick={handleClickTutor}
+                className="btn btn-outline-dark mx-1 my-2"
+                onClick={handleRequirememnt}
+              >
+                <i className="fa-brands fa-openid"></i>
+                &nbsp; Requirements
               </button>
               <button
                 onClick={handleClickBecomeATutor}
-                className="btn btn-outline-dark mx-2"
+                className="btn btn-outline-dark mx-1 my-2"
               >
                 <i className="fa-solid fa-user"></i>
                 &nbsp; Become a Tutor
               </button>
               <button
                 onClick={handleClickBookATutor}
-                className="btn btn-outline-dark"
+                className="btn btn-outline-dark mx-1 my-2"
               >
                 <i className="fa-solid fa-user-graduate"></i>
                 &nbsp; Book A Tutor
               </button>
-            </form>
+            </div>
+            <form className="d-flex"></form>
           </div>
         </div>
       </nav>

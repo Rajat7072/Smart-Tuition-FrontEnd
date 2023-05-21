@@ -312,6 +312,12 @@ code {
   left: 40%;
 }
 
+.borderRequirement{
+  border: 1px solid brown;
+  border-radius: 10px;
+  margin: 3px 3px 0px 3px;
+  padding: 2px;
+}
 @media only screen and (max-width:850px){
   .Student_is_radio{
     font-size: 13px;
@@ -379,7 +385,8 @@ code {
     display: none;
   }
   .textarea{
-    top:21%;
+    font-size: 25px;
+    top:30%;
   }
 }
 @media only screen and (max-width:600px){
