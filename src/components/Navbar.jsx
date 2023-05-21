@@ -86,6 +86,8 @@ const Navbar = () => {
               style={{
                 display: "flex",
                 alignItems: "center",
+                //background: "red",
+                boxShadow: "2px -4px 5px black",
               }}
             >
               <i className="fa-solid fa-cart-shopping"></i>

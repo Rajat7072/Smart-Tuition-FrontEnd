@@ -87,11 +87,14 @@ const TeacherCart = () => {
           <div
             key={element._id}
             style={{
-              border: "2px solid red",
-              margin: "2px",
+              border: "3px solid black",
+              marginBottom: "12px",
               padding: "10px",
               display: "flex",
               borderRadius: "10px",
+              boxShadow: "-5px 10px red",
+              //background: "#E4D9EB",
+              //opacity: "0.2",
             }}
           >
             <div style={{ marginRight: "20px" }}>
@@ -174,6 +177,7 @@ const TeacherCart = () => {
         }}
       >
         <button
+          style={{ marginTop: "5px" }}
           type="button"
           className="btn btn-dark"
           disabled={myVarAble ? false : true}
