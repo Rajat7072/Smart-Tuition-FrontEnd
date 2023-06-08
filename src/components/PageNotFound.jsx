@@ -22,10 +22,10 @@ const PageNotFound = () => {
                 <button
                   style={{ marginTop: "5px" }}
                   type="button"
-                  className="btn btn-primary"
+                  class="btn btn-primary"
                   onClick={handleClick}
                 >
-                  <i className="fa-solid fa-house-circle-check"></i>
+                  <i class="fa-solid fa-house-circle-check"></i>
                   Home
                 </button>
               </div>
