@@ -109,7 +109,7 @@ const TeacherCart = () => {
                     padding: "5px",
                   }}
                   src={element.profilepicimg}
-                  alt="profile picture"
+                  alt="profile"
                 />
               ) : (
                 <img
@@ -122,7 +122,7 @@ const TeacherCart = () => {
                     padding: "5px",
                   }}
                   src={ppl}
-                  alt="Default Image"
+                  alt="Default"
                 />
               )}
             </div>
