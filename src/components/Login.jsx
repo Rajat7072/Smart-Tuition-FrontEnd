@@ -2,33 +2,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { loginAuthpush } from "../ApiCalls/loginAuthApi";
+//import { loginAuthpush } from "../ApiCalls/loginAuthApi";
 
 const Login = () => {
-  // const navigate = useNavigate();
   const [login, setLogin] = useState({ Signemail: "", Signpassword: "" });
   const handleChange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
   };
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const result = await loginAuthpush(login);
-    //console.log("result is ", result);
-    if (result) {
-      //navigate("/readTeacher");
-      window.location.href = "/readTeacher";
-    } else if (!result) {
-      toast("Incorrect user Name or Password! 😕", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    }
+    //loginAuthpush(login);
+    toast("This Feature is under Development! 🚧", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   return (
     <>

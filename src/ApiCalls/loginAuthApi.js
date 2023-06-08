@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 
 export const loginAuthpush = async ({ Signemail, Signpassword }) => {
   try {
-    console.log("It's failing here");
     const response = await axios.post(
       `${process.env.REACT_APP_URL}/api/login/login-details`,
       {
@@ -16,11 +15,10 @@ export const loginAuthpush = async ({ Signemail, Signpassword }) => {
         },
       }
     );
-    const json_data = await response.data;
-    console.log("this data is crucial", response.status);
+    const json_data = response.data;
+    //console.log(json_data);
     if (json_data.success === true) {
       //console.log(json_data);
-      localStorage.setItem("detailsToken", JSON.stringify(json_data));
       toast.success("Please wait we are fetching Your Details", {
         position: "top-right",
         autoClose: 3000,
@@ -31,24 +29,33 @@ export const loginAuthpush = async ({ Signemail, Signpassword }) => {
         progress: undefined,
         theme: "light",
       });
-      return json_data.success;
+    } else if (json_data.errors) {
+      toast.error(json_data.errors[0].msg, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        icon: "❗",
+      });
     } else {
-      //console.log("Inside else Part");
-      // toast.error(json_data.message, {
-      //   position: "top-right",
-      //   autoClose: 3000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      //   theme: "light",
-      //   icon: "❗",
-      // });
-      return json_data.success;
+      toast.error("Some Error Occurred Please Try after Some Time", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        icon: "❗",
+      });
     }
   } catch (error) {
-    toast(error.response.data, {
+    toast(error.response.data.errors[0].msg, {
       position: "bottom-left",
       icon: "❗",
     });
