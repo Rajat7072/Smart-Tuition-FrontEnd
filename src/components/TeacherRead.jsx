@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import Spinner from "./Spinner";
+import { toast } from "react-toastify";
 import ourbg from "../images/ourbg.jpg";
 import ppl from "../images/people.png";
 import { fetchLoginTeacherDetails } from "../ApiCalls/teacherDetailLogin";
@@ -14,6 +15,18 @@ const TeacherRead = () => {
     localStorage.clear("detailsToken");
     window.location.href = "/";
   };
+  const handleEdit = () => {
+    toast("This Feature is under Development 🚧", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
   useEffect(() => {
     const myResult = async () => {
       try {
@@ -21,12 +34,12 @@ const TeacherRead = () => {
         setLoading(false);
         setData({ ...result });
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
     };
     myResult();
   }, []);
-  console.log(data);
+  //console.log(data);
   return (
     <>
       <ModalDelete name={data.profileName} />
@@ -81,6 +94,7 @@ const TeacherRead = () => {
                     type="button"
                     className="btn btn-outline-success"
                     style={{ marginBottom: "5px" }}
+                    onClick={handleEdit}
                   >
                     Edit Profile &nbsp;
                     <i className="fa-solid fa-pen-to-square"></i>
