@@ -22,7 +22,7 @@ const BirthdayProfile = () => {
         zIndex: 1,
       }}
     >
-      <h1
+      <h2
         style={{
           marginTop: "10px",
           border: "2px solid violet",
@@ -32,7 +32,7 @@ const BirthdayProfile = () => {
         }}
       >
         Happy Birthday!
-      </h1>
+      </h2>
       {/* <h4>Celebrate this special day with joy and laughter.</h4> */}
       <div
         style={{
@@ -57,9 +57,9 @@ const BirthdayProfile = () => {
             src={vars}
             alt="gif"
             style={{
-              width: "250px",
+              width: "200px",
               //position: "fixed",
-              height: "250px",
+              height: "200px",
               border: "2px solid black",
               transform: "rotate(-20deg)",
               boxShadow: "5px 5px 5px brown",
@@ -69,9 +69,9 @@ const BirthdayProfile = () => {
             src={birthgif}
             alt="gif"
             style={{
-              width: "250px",
+              width: "200px",
               //position: "fixed",
-              height: "250px",
+              height: "200px",
               border: "2px solid black",
               transform: "rotate(20deg)",
               boxShadow: "5px 5px 5px brown",
@@ -115,7 +115,7 @@ const BirthdayProfile = () => {
               style={{
                 color: "red",
                 boxShadow: "2px 2px 2px 2px aqua",
-                fontSize: "55px",
+                fontSize: "35px",
                 borderRadius: "10px",
               }}
             >
