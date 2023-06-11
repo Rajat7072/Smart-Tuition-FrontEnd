@@ -17,7 +17,7 @@ export const contactuspush = async ({ name, mobileNum, emailAdd }) => {
         },
       }
     );
-    const json_data = response.data;
+    const json_data = await response.data;
     if (json_data.success === true) {
       toast.success("we will contact you with in 24 hours", {
         position: "top-right",
