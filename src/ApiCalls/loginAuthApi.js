@@ -17,7 +17,7 @@ export const loginAuthpush = async ({ Signemail, Signpassword }) => {
       }
     );
     const json_data = await response.data;
-    console.log("this data is crucial", response.status);
+    //console.log("this data is crucial", response.status);
     if (json_data.success === true) {
       //console.log(json_data);
       localStorage.setItem("detailsToken", JSON.stringify(json_data));

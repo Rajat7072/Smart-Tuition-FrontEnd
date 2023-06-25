@@ -20,6 +20,10 @@ export const TeacherDetailPush = async ({
   //console.log("Hi Wala");
   try {
     //console.log("Rajat");
+    const token_value = JSON.parse(localStorage.getItem("detailsToken"));
+    console.log("ye wala token", token_value);
+    const direct_token = localStorage.getItem("token");
+    console.log("printing direct token", direct_token);
     const response = await axios.post(
       `${process.env.REACT_APP_URL}/api/detail/teacher-details`,
       {
@@ -41,12 +45,13 @@ export const TeacherDetailPush = async ({
       {
         headers: {
           "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("token"),
+          "auth-token":
+            direct_token === null ? token_value.token : direct_token,
         },
       }
     );
     const json_data = await response.data;
-    //console.log("This data is ", json_data);
+    console.log("This data is ", json_data);
     if (json_data.success === true) {
       localStorage.clear();
       window.location.href = "/final";
@@ -78,7 +83,7 @@ export const TeacherDetailPush = async ({
       localStorage.clear();
     }
   } catch (error) {
-    //console.log(error);
+    console.log(error);
     toast(error, {
       position: "bottom-left",
       icon: "❗",

@@ -1,6 +1,10 @@
 import React from "react";
+import { deleteTeacher } from "../ApiCalls/DeleteTeacherApi";
 
 const ModalDelete = (probs) => {
+  const handleclick = () => {
+    deleteTeacher();
+  };
   console.log(probs.name);
   return (
     <div
@@ -34,7 +38,11 @@ const ModalDelete = (probs) => {
             >
               Close
             </button>
-            <button type="button" className="btn btn-danger">
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={handleclick}
+            >
               Delete
             </button>
           </div>

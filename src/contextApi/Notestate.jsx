@@ -3,6 +3,8 @@ import Notecontext from "./Notecontext";
 import { useState } from "react";
 
 const Notestate = (props) => {
+  const [edit, setEdit] = useState(false);
+  const [details, setDetails] = useState({});
   const [ApiDetail, setApiDetail] = useState({
     subject: "",
     class_val: "",
@@ -25,7 +27,9 @@ const Notestate = (props) => {
   });
   //console.log(ApiDetail);
   return (
-    <Notecontext.Provider value={{ ApiDetail, setApiDetail }}>
+    <Notecontext.Provider
+      value={{ ApiDetail, setApiDetail, edit, setEdit, details, setDetails }}
+    >
       {props.children}
     </Notecontext.Provider>
   );

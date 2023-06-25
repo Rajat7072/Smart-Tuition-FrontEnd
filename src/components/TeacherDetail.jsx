@@ -1,77 +1,90 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { toast } from "react-toastify";
 import { TeacherDetailPush } from "../ApiCalls/TeacherDetailApi";
 import Profilepic from "./Profilepic";
-import { useNavigate } from "react-router-dom";
+import Notecontext from "../contextApi/Notecontext";
+// import { useNavigate } from "react-router-dom";
 
 const TeacherDetail = () => {
   //var FinalAadhar = "";
-  const navigate = useNavigate();
-  const name_of_techer = localStorage.getItem("nameData");
-  const phone_of_teacher = localStorage.getItem("phoneData");
-  //console.log(name_of_techer);
+  // const navigate = useNavigate();
+  var name_of_techer,
+    phone_of_teacher = null;
+  const EditProfile = useContext(Notecontext);
+  const { edit, details } = EditProfile;
+  console.log("Edit buttton ka kamal", edit, details);
+  console.log("I am first", details?.TSubject);
+  if (edit) {
+    name_of_techer = details?.profileName;
+    phone_of_teacher = details?.TeacherMobile;
+    console.log("teachgername", name_of_techer);
+  } else {
+    name_of_techer = localStorage.getItem("nameData");
+    phone_of_teacher = localStorage.getItem("phoneData");
+  }
+
   const currentDate = new Date().toISOString().split("T")[0];
+
   const [teacherDetail, setTeacherDetail] = useState({
-    profileName: name_of_techer,
-    profilepicimg: "",
-    DOB: "",
+    profileName: name_of_techer === null ? "" : name_of_techer,
+    profilepicimg:
+      Object.keys(details).length === 0 ? "" : details?.profilepicimg,
+    DOB: Object.keys(details).length === 0 ? "" : details?.DOB,
     TGender: "",
     Add: "",
-    Qualification: "",
-    TSubject: "",
-    TClasses: "",
+    Qualification:
+      Object.keys(details).length === 0 ? "" : details?.Qualification,
+    TSubject: Object.keys(details).length === 0 ? "" : details?.TSubject,
+    TClasses: Object.keys(details).length === 0 ? "" : details?.TClasses,
     AadharCardNum: "",
-    FeeAsked: "",
-    TeacherMobile: phone_of_teacher,
-    TeacherExperiance: "",
-    TeacherAbout: "",
+    FeeAsked: Object.keys(details).length === 0 ? "" : details?.FeeAsked,
+    TeacherMobile: phone_of_teacher === null ? "" : phone_of_teacher,
+    TeacherExperiance:
+      Object.keys(details).length === 0 ? "" : details?.TeacherExperiance,
+    TeacherAbout:
+      Object.keys(details).length === 0 ? "" : details?.TeacherAbout,
   });
   const [AddressTeacher, setAddressTeacher] = useState({
-    HouseNo: "",
-    Street: "",
-    City: "",
-    Pincode: "",
+    HouseNo:
+      Object.keys(details).length === 0
+        ? ""
+        : details?.Add?.split(": ")[1].split(",")[0],
+    Street:
+      Object.keys(details).length === 0
+        ? ""
+        : details?.Add?.split(": ")[2].split(",")[0],
+    City:
+      Object.keys(details).length === 0
+        ? ""
+        : details?.Add?.split(": ")[3].split(",")[0],
+    Pincode:
+      Object.keys(details).length === 0
+        ? ""
+        : details?.Add?.split(": ")[4].split(",")[0],
   });
   const handleAddressT = (e) => {
     e.preventDefault();
     setAddressTeacher({ ...AddressTeacher, [e.target.name]: e.target.value });
-    // setTeacherDetail({
-    //   ...teacherDetail,
-    //   // eslint-disable-next-line
-    //   ["Add"]: `HouseNo: ${AddressTeacher?.HouseNo} Street: ${AddressTeacher?.Street} City: ${AddressTeacher?.City} Pincode: ${AddressTeacher?.Pincode}`,
-    // });
   };
-  // const handleAboutTeacher = (e) => {
-  //   let descval = e.target.value;
-  //   if (descval.length > 100) {
-  //     descval.trim(0, 100);
-  //     setTeacherDetail({ ...teacherDetail, [e.target.name]: descval });
-  //   } else {
-  //     setTeacherDetail({ ...teacherDetail, [e.target.name]: e.target.value });
-  //   }
-  // };
   const [AadharNum, setAadharNum] = useState({
-    Aadhar1: "",
-    Aadhar2: "",
-    Aadhar3: "",
+    Aadhar1:
+      Object.keys(details).length === 0
+        ? ""
+        : details?.AadharCardNum?.split(" - ")[0],
+    Aadhar2:
+      Object.keys(details).length === 0
+        ? ""
+        : details?.AadharCardNum?.split(" - ")[1],
+    Aadhar3:
+      Object.keys(details).length === 0
+        ? ""
+        : details?.AadharCardNum?.split(" - ")[2],
   });
   const handleAadhar = (e) => {
     e.preventDefault();
     setAadharNum({ ...AadharNum, [e.target.name]: e.target.value });
-    //FinalAadhar = `${AadharNum.Aadhar1} - ${AadharNum.Aadhar2} - ${AadharNum.Aadhar3} - ${AadharNum.Aadhar4}`;
-    //console.log(FinalAadhar);
-    // setTeacherDetail({
-    //   ...teacherDetail,
-    //   // eslint-disable-next-line
-    //   ["AadharCardNum"]: `${AadharNum.Aadhar1} - ${AadharNum.Aadhar2} - ${AadharNum.Aadhar3} - ${AadharNum.Aadhar4}`,
-    // });
   };
-  useEffect(() => {
-    if (name_of_techer === null) {
-      navigate("/");
-    }
-  }, [name_of_techer, navigate]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -85,7 +98,7 @@ const TeacherDetail = () => {
       ["AadharCardNum"]: `${AadharNum.Aadhar1} - ${AadharNum.Aadhar2} - ${AadharNum.Aadhar3}`,
     });
     // eslint-disable-next-line
-  }, [AadharNum]);
+  }, [AadharNum, details]);
   useEffect(() => {
     setTeacherDetail({
       ...teacherDetail,
@@ -93,29 +106,36 @@ const TeacherDetail = () => {
       ["Add"]: `House No: ${AddressTeacher?.HouseNo}, Street: ${AddressTeacher?.Street}, City: ${AddressTeacher?.City}, Pincode: ${AddressTeacher?.Pincode}`,
     });
     // eslint-disable-next-line
-  }, [AddressTeacher]);
+  }, [AddressTeacher, details]);
 
+  useEffect(() => {
+    if (edit) {
+      const checkboxValueApi = details?.TGender;
+      const checkbox = document.getElementById("flexRadioDefault1");
+      checkbox.checked = checkboxValueApi;
+      const AadharValue1 = document.getElementById("Aadhar1");
+      const AadharValue2 = document.getElementById("Aadhar2");
+      const AadharValue3 = document.getElementById("Aadhar3");
+      AadharValue1.value = details?.AadharCardNum?.split(" - ")[0];
+      AadharValue2.value = details?.AadharCardNum?.split(" - ")[1];
+      AadharValue3.value = details?.AadharCardNum?.split(" - ")[2];
+      const AddressValue1 = document.getElementById("Address1");
+      const AddressValue2 = document.getElementById("Address2");
+      const AddressValue3 = document.getElementById("Address3");
+      const AddressValue4 = document.getElementById("Address4");
+      AddressValue1.value = details?.Add?.split(": ")[1].split(",")[0];
+      AddressValue2.value = details?.Add?.split(": ")[2].split(",")[0];
+      AddressValue3.value = details?.Add?.split(": ")[3].split(",")[0];
+      AddressValue4.value = details?.Add?.split(": ")[4].split(",")[0];
+    }
+  }, [details, edit]);
   const handleSubmit = (e) => {
     //console.log(teacherDetail);
     e.preventDefault();
-    // if (teacherDetail?.profilepicimg === "") {
-    //   toast("Profile Picture is Required", {
-    //     position: "top-right",
-    //     autoClose: 3000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "light",
-    //     icon: "😅",
-    //   });
-    // } else
     if (
       AadharNum?.Aadhar1 === "" ||
       AadharNum?.Aadhar2 === "" ||
       AadharNum?.Aadhar3 === "" ||
-      AadharNum?.Aadhar4 === "" ||
       isNaN(AadharNum?.Aadhar1) ||
       isNaN(AadharNum?.Aadhar2) ||
       isNaN(AadharNum?.Aadhar3)
@@ -133,7 +153,8 @@ const TeacherDetail = () => {
       });
     } else if (
       teacherDetail?.TeacherMobile === "" ||
-      isNaN(teacherDetail?.TeacherMobile)
+      isNaN(teacherDetail?.TeacherMobile) ||
+      teacherDetail?.TeacherMobile === null
     ) {
       toast("Please Enter A valid Mobile Number", {
         position: "top-right",
@@ -196,6 +217,21 @@ const TeacherDetail = () => {
         theme: "light",
         icon: "😅",
       });
+    } else if (
+      teacherDetail?.profileName === "" ||
+      teacherDetail?.profileName === null
+    ) {
+      toast("Please Enter Your Name", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        icon: "😅",
+      });
     } else {
       //console.log(teacherDetail);
       toast("✅ Please wait we are Processing your Request", {
@@ -216,10 +252,27 @@ const TeacherDetail = () => {
           style={{ display: "flex", justifyContent: "space-between" }}
           className="detailprofil"
         >
-          <h2>
-            <i>Hi, {name_of_techer}</i>
-            <hr style={{ color: "red" }} />
-          </h2>
+          {edit || name_of_techer === null ? (
+            <div className="mb-3">
+              <label htmlFor="exampleInputClasses" className="form-label">
+                Enter Your Full Name
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="exampleInputName"
+                placeholder="Eg: Jhon Doe"
+                name="profileName"
+                value={teacherDetail?.profileName}
+                onChange={handleChange}
+              />
+            </div>
+          ) : (
+            <h2>
+              <i>Hi, {name_of_techer}</i>
+              <hr style={{ color: "red" }} />
+            </h2>
+          )}
           <Profilepic
             teacherDetail={teacherDetail}
             setTeacherDetail={setTeacherDetail}
@@ -278,6 +331,7 @@ const TeacherDetail = () => {
               Address
             </label>
             <input
+              id="Address1"
               type="text"
               className="form-control"
               placeholder="House No    ( Eg: 00/A )"
@@ -286,6 +340,7 @@ const TeacherDetail = () => {
               onChange={handleAddressT}
             />
             <input
+              id="Address2"
               type="text"
               className="form-control my-2"
               placeholder="Street   ( Rajeev Nagar )"
@@ -294,6 +349,7 @@ const TeacherDetail = () => {
               onChange={handleAddressT}
             />
             <input
+              id="Address3"
               type="text"
               className="form-control my-2"
               placeholder="city   ( Kanpur )"
@@ -302,6 +358,7 @@ const TeacherDetail = () => {
               onChange={handleAddressT}
             />
             <input
+              id="Address4"
               type="text"
               className="form-control my-2"
               placeholder="Pincode    ( 208022 )"
@@ -326,7 +383,7 @@ const TeacherDetail = () => {
           </div>
           <div className="mb-3">
             <label htmlFor="exampleInputSubject" className="form-label">
-              Prefferred Subjects To Teach
+              Preferred Subjects To Teach
             </label>
             <input
               type="text"
@@ -334,6 +391,7 @@ const TeacherDetail = () => {
               id="exampleInputSubject"
               placeholder="Eg: Hindi,Maths,Science (Seprated by commas)"
               name="TSubject"
+              value={teacherDetail?.TSubject}
               onChange={handleChange}
             />
           </div>
@@ -357,6 +415,7 @@ const TeacherDetail = () => {
             </label>
             <div style={{ display: "flex" }}>
               <input
+                id="Aadhar1"
                 type="text"
                 className="form-control"
                 placeholder="0000"
@@ -366,6 +425,7 @@ const TeacherDetail = () => {
                 onChange={handleAadhar}
               />
               <input
+                id="Aadhar2"
                 type="text"
                 className="form-control mx-2"
                 placeholder="0000"
@@ -375,6 +435,7 @@ const TeacherDetail = () => {
                 onChange={handleAadhar}
               />
               <input
+                id="Aadhar3"
                 type="text"
                 className="form-control mx-2"
                 placeholder="0000"
@@ -407,22 +468,42 @@ const TeacherDetail = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="mb-3 my-3">
-              <label htmlFor="exampleInputSubject" className="form-label">
-                Contact Details
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="exampleInputSubject"
-                name="TeacherMobile"
-                maxLength="10"
-                value={teacherDetail?.TeacherMobile}
-                placeholder="Eg : 8707258661"
-                readOnly
-                //onChange={handleChange}
-              />
-            </div>
+            <>
+              {edit || phone_of_teacher === null ? (
+                <div className="mb-3 my-3">
+                  <label htmlFor="exampleInputSubject" className="form-label">
+                    Contact Details
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="exampleInputSubject"
+                    name="TeacherMobile"
+                    maxLength="10"
+                    value={teacherDetail?.TeacherMobile}
+                    placeholder="Eg : 8707258661"
+                    onChange={handleChange}
+                  />
+                </div>
+              ) : (
+                <div className="mb-3 my-3">
+                  <label htmlFor="exampleInputSubject" className="form-label">
+                    Contact Details
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="exampleInputSubject"
+                    name="TeacherMobile"
+                    maxLength="10"
+                    value={teacherDetail?.TeacherMobile}
+                    placeholder="Eg : 8707258661"
+                    readOnly
+                    //onChange={handleChange}
+                  />
+                </div>
+              )}
+            </>
             <div className="mb-3 my-3">
               <label htmlFor="exampleInputSubject" className="form-label">
                 Teaching Experiance
@@ -444,7 +525,7 @@ const TeacherDetail = () => {
                 type="text"
                 className="form-control"
                 id="exampleInputExp"
-                placeholder="About Yourself"
+                placeholder="About Yourself *"
                 name="TeacherAbout"
                 maxLength={100}
                 value={teacherDetail?.TeacherAbout}

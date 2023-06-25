@@ -1,52 +1,56 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import Spinner from "./Spinner";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import ourbg from "../images/ourbg.jpg";
 import ppl from "../images/people.png";
 import { fetchLoginTeacherDetails } from "../ApiCalls/teacherDetailLogin";
 import ModalDelete from "./ModalDelete";
+import { useNavigate } from "react-router-dom";
+import Notecontext from "../contextApi/Notecontext";
 
 const TeacherRead = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({});
+  const EditButtonEnable = useContext(Notecontext);
+  const { setEdit, setDetails } = EditButtonEnable;
+  const navigate = useNavigate();
   const handleDelete = () => {
     localStorage.clear("detailsToken");
     window.location.href = "/";
   };
   const handleEdit = () => {
-    toast("This Feature is under Development 🚧", {
-      position: "top-right",
-      autoClose: 4000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+    setEdit(true);
+    setDetails({ ...data });
+    navigate("/TeacherDetails");
   };
   useEffect(() => {
     const myResult = async () => {
       try {
         const result = await fetchLoginTeacherDetails();
-        setLoading(false);
-        setData({ ...result });
+        console.log("Checking this wala", result);
+        if (result === "") {
+          navigate("/TeacherDetails");
+        } else {
+          setLoading(false);
+          setData({ ...result });
+        }
       } catch (error) {
         //console.log(error);
       }
     };
     myResult();
-  }, []);
-  //console.log(data);
+  }, [navigate]);
+  // console.log("Your data", data);
+  // console.log("My first", details);
   return (
     <>
       <ModalDelete name={data.profileName} />
       <div style={{ background: `url(${ourbg})` }}>
         <hr style={{ marginTop: "0px", marginBottom: "2px" }} />
         {loading ? (
-          <div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
             <Spinner />
           </div>
         ) : (

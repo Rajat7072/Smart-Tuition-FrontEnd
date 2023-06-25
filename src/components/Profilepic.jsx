@@ -6,6 +6,7 @@ import defpic from "../images/play_store_512.png";
 const Profilepic = (probs) => {
   const { teacherDetail, setTeacherDetail } = probs;
   //const [picturePro, setPicturePro] = useState("");
+  console.log("yaha dekha hai", teacherDetail?.Profilepic);
   const handleChange = async (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -55,7 +56,8 @@ const Profilepic = (probs) => {
         style={{ display: "flex", flexDirection: "column" }}
         className="profile_data"
       >
-        {teacherDetail?.profilepicimg === "" ? (
+        {teacherDetail?.profilepicimg === "" ||
+        teacherDetail?.profilepicimg === undefined ? (
           <img
             style={{
               width: "100px",
