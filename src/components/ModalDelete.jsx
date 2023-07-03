@@ -5,7 +5,7 @@ const ModalDelete = (probs) => {
   const handleclick = () => {
     deleteTeacher();
   };
-  console.log(probs.name);
+  //console.log(probs.name);
   return (
     <div
       className="modal fade"

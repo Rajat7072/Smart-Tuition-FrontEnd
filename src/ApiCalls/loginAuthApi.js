@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 export const loginAuthpush = async ({ Signemail, Signpassword }) => {
   try {
-    console.log("It's failing here");
+    //console.log("It's failing here");
     const response = await axios.post(
       `${process.env.REACT_APP_URL}/api/login/login-details`,
       {

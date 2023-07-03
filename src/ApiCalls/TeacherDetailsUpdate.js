@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const TeacherDetailPush = async ({
+export const TeacherUpdateDetailPush = async ({
   profileName,
   profilepicimg,
   DOB,
@@ -22,10 +22,10 @@ export const TeacherDetailPush = async ({
     //console.log("Rajat");
     const token_value = JSON.parse(localStorage.getItem("detailsToken"));
     //console.log("ye wala token", token_value);
-    const direct_token = localStorage.getItem("token");
-    //console.log("printing direct token", direct_token);
-    const response = await axios.post(
-      `${process.env.REACT_APP_URL}/api/detail/teacher-details`,
+    // const direct_token = localStorage.getItem("token");
+    // console.log("printing direct token", direct_token);
+    const response = await axios.put(
+      `${process.env.REACT_APP_URL}/api/detailsUpdate/teacher-details-update`,
       {
         profileName,
         profilepicimg,
@@ -45,8 +45,7 @@ export const TeacherDetailPush = async ({
       {
         headers: {
           "Content-Type": "application/json",
-          "auth-token":
-            direct_token === null ? token_value.token : direct_token,
+          "auth-token": token_value.token,
         },
       }
     );
@@ -54,7 +53,20 @@ export const TeacherDetailPush = async ({
     //console.log("This data is ", json_data);
     if (json_data.success === true) {
       localStorage.clear();
-      window.location.href = "/final";
+      toast("Details updated Successfully", {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        icon: "👷‍♀️",
+      });
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
     } else if (json_data.errors) {
       toast.error(json_data.Error, {
         position: "top-right",

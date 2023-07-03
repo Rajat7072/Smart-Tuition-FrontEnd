@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 export const fetchLoginTeacherDetails = async () => {
   const tokenValue = JSON.parse(localStorage.getItem("detailsToken"));
-  console.log(tokenValue.token);
+  //console.log(tokenValue.token);
   try {
     const response = await axios.get(
       `${process.env.REACT_APP_URL}/api/teacherLogin/getTeacherLoginDetails`,
@@ -15,7 +15,7 @@ export const fetchLoginTeacherDetails = async () => {
         },
       }
     );
-    console.log(response.data);
+    //console.log(response.data);
     return response.data;
   } catch (error) {
     //console.log(error);

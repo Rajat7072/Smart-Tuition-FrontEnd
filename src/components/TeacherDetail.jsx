@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { TeacherDetailPush } from "../ApiCalls/TeacherDetailApi";
 import Profilepic from "./Profilepic";
 import Notecontext from "../contextApi/Notecontext";
+import { TeacherUpdateDetailPush } from "../ApiCalls/TeacherDetailsUpdate";
 // import { useNavigate } from "react-router-dom";
 
 const TeacherDetail = () => {
@@ -13,12 +14,12 @@ const TeacherDetail = () => {
     phone_of_teacher = null;
   const EditProfile = useContext(Notecontext);
   const { edit, details } = EditProfile;
-  console.log("Edit buttton ka kamal", edit, details);
-  console.log("I am first", details?.TSubject);
+  //console.log("Edit buttton ka kamal", edit, details);
+  //console.log("I am first", details?.TSubject);
   if (edit) {
     name_of_techer = details?.profileName;
     phone_of_teacher = details?.TeacherMobile;
-    console.log("teachgername", name_of_techer);
+    //console.log("teachgername", name_of_techer);
   } else {
     name_of_techer = localStorage.getItem("nameData");
     phone_of_teacher = localStorage.getItem("phoneData");
@@ -31,7 +32,7 @@ const TeacherDetail = () => {
     profilepicimg:
       Object.keys(details).length === 0 ? "" : details?.profilepicimg,
     DOB: Object.keys(details).length === 0 ? "" : details?.DOB,
-    TGender: "",
+    TGender: Object.keys(details).length === 0 ? "" : details?.TGender,
     Add: "",
     Qualification:
       Object.keys(details).length === 0 ? "" : details?.Qualification,
@@ -234,13 +235,17 @@ const TeacherDetail = () => {
       });
     } else {
       //console.log(teacherDetail);
-      toast("✅ Please wait we are Processing your Request", {
-        position: "bottom-right",
-        autoClose: 2500,
-        theme: "light",
-        icon: "😅",
-      });
-      TeacherDetailPush(teacherDetail);
+      if (edit) {
+        TeacherUpdateDetailPush(teacherDetail);
+      } else {
+        toast("✅ Please wait we are Processing your Request", {
+          position: "bottom-right",
+          autoClose: 2500,
+          theme: "light",
+          icon: "😅",
+        });
+        TeacherDetailPush(teacherDetail);
+      }
       //console.log(teacherDetail);
     }
   };

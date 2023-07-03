@@ -29,7 +29,7 @@ const TeacherRead = () => {
     const myResult = async () => {
       try {
         const result = await fetchLoginTeacherDetails();
-        console.log("Checking this wala", result);
+        //console.log("Checking this wala", result);
         if (result === "") {
           navigate("/TeacherDetails");
         } else {

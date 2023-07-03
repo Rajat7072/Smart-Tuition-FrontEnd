@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 export const deleteTeacher = async () => {
   let value = JSON.parse(localStorage.getItem("detailsToken"));
-  console.log("This value is", value.token);
+  //console.log("This value is", value.token);
   try {
     const response = await axios.delete(
       `${process.env.REACT_APP_URL}/api/delete/techerDelete`,
@@ -15,7 +15,7 @@ export const deleteTeacher = async () => {
       }
     );
     const json_data = response.data;
-    console.log("ye wala Json data hai", json_data);
+    //console.log("ye wala Json data hai", json_data);
     if (json_data.success === true) {
       localStorage.clear();
       toast.success("Profile Deleted Successfully", {
@@ -61,6 +61,6 @@ export const deleteTeacher = async () => {
       position: "bottom-left",
       icon: "❗",
     });
-    console.log(error);
+    //console.log(error);
   }
 };
