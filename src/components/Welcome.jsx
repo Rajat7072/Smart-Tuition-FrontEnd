@@ -12,14 +12,6 @@ import Footer from "./Footer";
 import MobileNumberContact from "./MobileNumberContact";
 
 const Welcome = () => {
-  useEffect(() => {
-    const navbar = document.getElementById("NextgenerationID");
-    navbar.classList.add("fixed-top");
-
-    return () => {
-      navbar.classList.remove("fixed-top");
-    };
-  }, []);
   return (
     <>
       <BlurComponent />
