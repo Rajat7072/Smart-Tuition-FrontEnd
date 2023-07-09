@@ -177,7 +177,7 @@ const TeacherCart = () => {
         }}
       >
         <button
-          style={{ marginTop: "5px" }}
+          style={{ marginTop: "5px", marginBottom: "10px" }}
           type="button"
           className="btn btn-dark"
           disabled={myVarAble ? false : true}
