@@ -23,6 +23,16 @@ const TeacherProfileDetail = () => {
   const handleDemo = (element) => {
     dispatch(addToCart(element));
   };
+
+  useEffect(() => {
+    const navbar = document.getElementById("NextgenerationID");
+    navbar.classList.add("fixed-top");
+
+    return () => {
+      navbar.classList.remove("fixed-top");
+    };
+  }, []);
+
   useEffect(() => {
     const myResult = async () => {
       try {

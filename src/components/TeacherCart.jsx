@@ -22,6 +22,15 @@ const TeacherCart = () => {
   });
 
   useEffect(() => {
+    const navbar = document.getElementById("NextgenerationID");
+    navbar.classList.add("fixed-top");
+
+    return () => {
+      navbar.classList.remove("fixed-top");
+    };
+  }, []);
+
+  useEffect(() => {
     if (name_of_student === null || number_of_student === null) {
       localStorage.clear();
       //navigate("/");
