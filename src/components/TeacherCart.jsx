@@ -69,7 +69,7 @@ const TeacherCart = () => {
     await CartDetailPush(teacherCart);
   };
   return (
-    <>
+    <div style={{ marginTop: "75px" }}>
       <div style={{ padding: "5px", display: "flex" }}>
         <img
           className="previous_arrow"
@@ -195,7 +195,7 @@ const TeacherCart = () => {
           Submit
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

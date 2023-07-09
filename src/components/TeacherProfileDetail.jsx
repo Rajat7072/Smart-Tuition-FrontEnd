@@ -58,6 +58,7 @@ const TeacherProfileDetail = () => {
               textAlign: "center",
               padding: "5px",
               color: "black",
+              marginTop: "75px",
             }}
           >
             <h6 style={{ textDecoration: "underline" }}>
@@ -67,7 +68,7 @@ const TeacherProfileDetail = () => {
         </>
       )}
       {loading ? (
-        <div className="step1">
+        <div className="step1" style={{ marginTop: "75px" }}>
           <Spinner />
         </div>
       ) : (
@@ -81,6 +82,7 @@ const TeacherProfileDetail = () => {
               padding: "10px",
               display: "flex",
               borderRadius: "10px",
+              marginTop: "73px",
             }}
           >
             <div style={{ marginRight: "20px" }}>
