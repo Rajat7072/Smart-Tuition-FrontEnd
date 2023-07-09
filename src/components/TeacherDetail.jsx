@@ -88,7 +88,7 @@ const TeacherDetail = () => {
   };
 
   const handleChange = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     setTeacherDetail({ ...teacherDetail, [e.target.name]: e.target.value });
     //console.log(teacherDetail);
   };

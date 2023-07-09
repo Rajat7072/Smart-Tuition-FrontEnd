@@ -54,10 +54,10 @@ const Step6 = () => {
         theme: "light",
       });
     } else if (
-      student_details.phone.length < 10 ||
+      student_details.phone.length !== 10 ||
       !Number.isInteger(Number(student_details.phone))
     ) {
-      toast.warn(" Please Enter a valid Phone number 📱", {
+      toast.warn(" Please Enter a valid 10 digit Mobile number 📱", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
