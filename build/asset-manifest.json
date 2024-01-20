@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.014cb92a.css",
+    "main.js": "/static/js/main.ac1ef195.js",
+    "static/js/787.b3ec773c.chunk.js": "/static/js/787.b3ec773c.chunk.js",
+    "static/media/thank.gif": "/static/media/thank.4ddda503041b0c6f71cc.gif",
+    "static/media/BirthGif.gif": "/static/media/BirthGif.fff64a123dfc3b367e98.gif",
+    "static/media/backGif.gif": "/static/media/backGif.2aaca279a6bad57309a5.gif",
+    "static/media/Birthday.mp3": "/static/media/Birthday.abad9088714bbef155cf.mp3",
+    "static/media/click.gif": "/static/media/click.38823f28e79294d52254.gif",
+    "static/media/ourbg.jpg": "/static/media/ourbg.13c41db45f2fa31e73c6.jpg",
+    "static/media/varshini.jpg": "/static/media/varshini.c296f13ea645ca216b68.jpg",
+    "static/media/play_store_512.png": "/static/media/play_store_512.4e5d260d210b285c88e1.png",
+    "static/media/loading.gif": "/static/media/loading.712da3790f99b4a5ce7e.gif",
+    "static/media/previous.png": "/static/media/previous.17930e7c9760cc0db957.png",
+    "static/media/people.png": "/static/media/people.7b875e14f91e2c1c8fa3.png",
+    "index.html": "/index.html",
+    "main.014cb92a.css.map": "/static/css/main.014cb92a.css.map",
+    "main.ac1ef195.js.map": "/static/js/main.ac1ef195.js.map",
+    "787.b3ec773c.chunk.js.map": "/static/js/787.b3ec773c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.014cb92a.css",
+    "static/js/main.ac1ef195.js"
+  ]
+}
