@@ -42,7 +42,7 @@ const Signup = () => {
       signupDeatails?.Signpassword === "" ||
       signupDeatails?.Signcpassword === ""
     ) {
-      toast("Feilds can not be Empty", {
+      toast("Please Fill all the Mandatory Feilds", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -125,7 +125,9 @@ const Signup = () => {
               }}
             >
               <div style={{ width: "100%", marginRight: "5px" }}>
-                <label className="form-label">First Name</label>
+                <label className="form-label">
+                  First Name <span className="colorRed"> *</span>
+                </label>
                 <input
                   type="text"
                   className="form-control"
@@ -137,7 +139,9 @@ const Signup = () => {
                 />
               </div>
               <div style={{ width: "100%" }}>
-                <label className="form-label">Last Name</label>
+                <label className="form-label">
+                  Last Name <span className="colorRed"> *</span>
+                </label>
                 <input
                   type="text"
                   className="form-control"
@@ -151,7 +155,9 @@ const Signup = () => {
             </div>
           </div>
           <div className="mb-3">
-            <label className="form-label">Email address</label>
+            <label className="form-label">
+              Email address <span className="colorRed"> *</span>
+            </label>
             <input
               type="email"
               className="form-control"
@@ -165,7 +171,9 @@ const Signup = () => {
             </div>
           </div>
           <div className="mb-3">
-            <label className="form-label">Mobile Number</label>
+            <label className="form-label">
+              Mobile Number <span className="colorRed"> *</span>
+            </label>
             <input
               type="text"
               className="form-control"
@@ -180,7 +188,9 @@ const Signup = () => {
             </div>
           </div>
           <div className="mb-3">
-            <label className="form-label">Password</label>
+            <label className="form-label">
+              Password <span className="colorRed"> *</span>
+            </label>
             <input
               type="password"
               className="form-control"
@@ -191,7 +201,9 @@ const Signup = () => {
             />
           </div>
           <div className="mb-3">
-            <label className="form-label">Confirm Password</label>
+            <label className="form-label">
+              Confirm Password <span className="colorRed"> *</span>
+            </label>
             <input
               type="text"
               className="form-control"

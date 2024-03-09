@@ -5,21 +5,17 @@ import { TeacherDetailPush } from "../ApiCalls/TeacherDetailApi";
 import Profilepic from "./Profilepic";
 import Notecontext from "../contextApi/Notecontext";
 import { TeacherUpdateDetailPush } from "../ApiCalls/TeacherDetailsUpdate";
+import { toastDisplay } from "./toastDisplay";
 // import { useNavigate } from "react-router-dom";
 
 const TeacherDetail = () => {
-  //var FinalAadhar = "";
-  // const navigate = useNavigate();
   var name_of_techer,
     phone_of_teacher = null;
   const EditProfile = useContext(Notecontext);
   const { edit, details } = EditProfile;
-  //console.log("Edit buttton ka kamal", edit, details);
-  //console.log("I am first", details?.TSubject);
   if (edit) {
     name_of_techer = details?.profileName;
     phone_of_teacher = details?.TeacherMobile;
-    //console.log("teachgername", name_of_techer);
   } else {
     name_of_techer = localStorage.getItem("nameData");
     phone_of_teacher = localStorage.getItem("phoneData");
@@ -83,14 +79,11 @@ const TeacherDetail = () => {
         : details?.AadharCardNum?.split(" - ")[2],
   });
   const handleAadhar = (e) => {
-    e.preventDefault();
     setAadharNum({ ...AadharNum, [e.target.name]: e.target.value });
   };
 
   const handleChange = (e) => {
-    //e.preventDefault();
     setTeacherDetail({ ...teacherDetail, [e.target.name]: e.target.value });
-    //console.log(teacherDetail);
   };
   useEffect(() => {
     setTeacherDetail({
@@ -131,7 +124,6 @@ const TeacherDetail = () => {
     }
   }, [details, edit]);
   const handleSubmit = (e) => {
-    //console.log(teacherDetail);
     e.preventDefault();
     if (
       AadharNum?.Aadhar1 === "" ||
@@ -141,50 +133,30 @@ const TeacherDetail = () => {
       isNaN(AadharNum?.Aadhar2) ||
       isNaN(AadharNum?.Aadhar3)
     ) {
-      toast("Please Enter A valid Aadhar Card Number", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        icon: "😅",
-      });
+      toastDisplay(
+        "Please Enter A valid Aadhar Card Number",
+        "top-right",
+        "😅",
+        3000
+      );
     } else if (
       teacherDetail?.TeacherMobile === "" ||
       isNaN(teacherDetail?.TeacherMobile) ||
       teacherDetail?.TeacherMobile === null
     ) {
-      toast("Please Enter A valid Mobile Number", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        icon: "😅",
-      });
+      toastDisplay(
+        "Please Enter A valid Mobile Number",
+        "top-right",
+        "😅",
+        3000
+      );
     } else if (
       AddressTeacher?.HouseNo === "" ||
       AddressTeacher?.Street === "" ||
       AddressTeacher?.City === "" ||
       AddressTeacher?.Pincode === ""
     ) {
-      toast("Address Feilds can not be Empty", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        icon: "😅",
-      });
+      toastDisplay("Address Feilds can not be Empty", "top-right", "😅", 3000);
     } else if (
       teacherDetail?.DOB === "" ||
       teacherDetail?.TGender === "" ||
@@ -195,46 +167,25 @@ const TeacherDetail = () => {
       teacherDetail?.TClasses === "" ||
       teacherDetail?.TeacherAbout === ""
     ) {
-      toast("Please fill All the Details", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        icon: "😅",
-      });
+      toastDisplay(
+        "Please fill All the Mandatory Feilds",
+        "top-right",
+        "😅",
+        3000
+      );
     } else if (teacherDetail?.DOB > currentDate) {
-      toast("Date of Birth cannot be future Date", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        icon: "😅",
-      });
+      toastDisplay(
+        "Date of Birth cannot be future Date",
+        "top-right",
+        "😅",
+        3000
+      );
     } else if (
       teacherDetail?.profileName === "" ||
       teacherDetail?.profileName === null
     ) {
-      toast("Please Enter Your Name", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        icon: "😅",
-      });
+      toastDisplay("Please Enter Your Name", "top-right", "😅", 3000);
     } else {
-      //console.log(teacherDetail);
       if (edit) {
         TeacherUpdateDetailPush(teacherDetail);
       } else {
@@ -244,9 +195,9 @@ const TeacherDetail = () => {
           theme: "light",
           icon: "😅",
         });
+        console.log("Here you are");
         TeacherDetailPush(teacherDetail);
       }
-      //console.log(teacherDetail);
     }
   };
   return (
@@ -261,6 +212,7 @@ const TeacherDetail = () => {
             <div className="mb-3">
               <label htmlFor="exampleInputClasses" className="form-label">
                 Enter Your Full Name
+                <span className="colorRed"> *</span>
               </label>
               <input
                 type="text"
@@ -287,6 +239,7 @@ const TeacherDetail = () => {
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
               Date of Birth
+              <span className="colorRed"> *</span>
             </label>
             <input
               type="date"
@@ -301,6 +254,7 @@ const TeacherDetail = () => {
           <div>
             <label htmlFor="exampleInputEmail1" className="form-label">
               Gender
+              <span className="colorRed"> *</span>
             </label>
             <div style={{ display: "flex" }}>
               <div className="form-check">
@@ -334,6 +288,7 @@ const TeacherDetail = () => {
           <div className="mb-3 my-3">
             <label htmlFor="exampleInputPassword1" className="form-label">
               Address
+              <span className="colorRed"> *</span>
             </label>
             <input
               id="Address1"
@@ -375,6 +330,7 @@ const TeacherDetail = () => {
           <div className="mb-3">
             <label htmlFor="exampleInputQualification" className="form-label">
               Highest Qualification
+              <span className="colorRed"> *</span>
             </label>
             <input
               type="text"
@@ -389,6 +345,7 @@ const TeacherDetail = () => {
           <div className="mb-3">
             <label htmlFor="exampleInputSubject" className="form-label">
               Preferred Subjects To Teach
+              <span className="colorRed"> *</span>
             </label>
             <input
               type="text"
@@ -403,6 +360,7 @@ const TeacherDetail = () => {
           <div className="mb-3">
             <label htmlFor="exampleInputClasses" className="form-label">
               Prefferred Classes To Teach
+              <span className="colorRed"> *</span>
             </label>
             <input
               type="text"
@@ -416,8 +374,11 @@ const TeacherDetail = () => {
           </div>
           <div className="mb-3">
             <label htmlFor="exampleInputAdhar" className="form-label">
-              Enter Your Aadhar Number
+              Enter Your Aadhar Number{" "}
+              <em>(Aadhar Details are likely to be shared with Parents)</em>
+              <span className="colorRed"> *</span>
             </label>
+
             <div style={{ display: "flex" }}>
               <input
                 id="Aadhar1"
@@ -449,19 +410,11 @@ const TeacherDetail = () => {
                 //value={teacherDetail?.AadharCardNum?.Aadhar3}
                 onChange={handleAadhar}
               />
-              {/* <input
-                type="text"
-                className="form-control"
-                placeholder="0000"
-                maxLength="4"
-                name="Aadhar4"
-                //value={teacherDetail?.AadharCardNum?.Aadhar4}
-                onChange={handleAadhar}
-              /> */}
             </div>
             <div className="mb-3 my-3">
               <label htmlFor="exampleInputSubject" className="form-label">
                 Fee Details
+                <span className="colorRed"> *</span>
               </label>
               <input
                 type="text"
@@ -478,6 +431,7 @@ const TeacherDetail = () => {
                 <div className="mb-3 my-3">
                   <label htmlFor="exampleInputSubject" className="form-label">
                     Contact Details
+                    <span className="colorRed"> *</span>
                   </label>
                   <input
                     type="text"
@@ -494,6 +448,7 @@ const TeacherDetail = () => {
                 <div className="mb-3 my-3">
                   <label htmlFor="exampleInputSubject" className="form-label">
                     Contact Details
+                    <span className="colorRed"> *</span>
                   </label>
                   <input
                     type="text"
@@ -512,6 +467,7 @@ const TeacherDetail = () => {
             <div className="mb-3 my-3">
               <label htmlFor="exampleInputSubject" className="form-label">
                 Teaching Experiance
+                <span className="colorRed"> *</span>
               </label>
               <input
                 type="text"

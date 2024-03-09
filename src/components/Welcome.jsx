@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import BlurComponent from "./BlurComponent";
 import Searchbox from "./Searchbox";
 import Display from "./Display";

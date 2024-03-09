@@ -51,6 +51,10 @@ code {
 .deco {
   text-decoration: none;
 }
+
+.colorRed{
+  color: red;
+}
 .textarea {
   display: flex;
   align-items: center;
