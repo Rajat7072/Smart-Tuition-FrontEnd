@@ -131,7 +131,10 @@ const TeacherDetail = () => {
       AadharNum?.Aadhar3 === "" ||
       isNaN(AadharNum?.Aadhar1) ||
       isNaN(AadharNum?.Aadhar2) ||
-      isNaN(AadharNum?.Aadhar3)
+      isNaN(AadharNum?.Aadhar3) ||
+      AadharNum.Aadhar1.length < 4 ||
+      AadharNum.Aadhar2.length < 4 ||
+      AadharNum.Aadhar3.length < 4
     ) {
       toastDisplay(
         "Please Enter A valid Aadhar Card Number",
